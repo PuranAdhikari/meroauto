@@ -15,15 +15,21 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('language');
+            $table->string('english_heading')->nullable();
+            $table->string('nepali_heading')->nullable();
+            $table->string('english_sub_heading')->nullable();
+            $table->string('nepali_sub_heading')->nullable();
             $table->string('slug')->unique();
             $table->integer('category')->unsigned();
             $table->foreign('category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('image')->unsigned()->nullable();
-            $table->text('description')->nullable();
+            $table->text('english_content')->nullable();
+            $table->text('nepali_content')->nullable();
             $table->tinyInteger('featured')->default(0);
             $table->tinyInteger('published')->default(0);
+            $table->tinyInteger('main_news')->default(0);
 
             $table->string('start_publishing')->nullable();
             $table->string('finish_publishing')->nullable();

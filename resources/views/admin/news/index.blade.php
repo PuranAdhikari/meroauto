@@ -35,7 +35,8 @@
                                     <tr>
                                         <th class="project-status"><input type="checkbox" id="select-all"></th>
                                         <th class="project-status">Status</th>
-                                        <th class="project-title">News Title</th>
+                                        <th class="project-status">Language</th>
+                                        <th class="project-title">News Heading</th>
                                         <th class="project-title">Category</th>
                                         <th class="project-title">Featured</th>
                                         <th class="project-title">Image</th>
@@ -57,8 +58,15 @@
                                                     {!! $post->published ? 'Active' : 'Inactive' !!}
                                                 </a>
                                             </td>
+                                            <td class="project-status">
+                                                {!! $post->isEnglishAndNepali() ? 'English & Nepali' : $post->language !!}
+                                            </td>
                                             <td class="project-title">
-                                                <a href="/admin/news/{{$post->id}}/edit">{!! $post->title !!}</a>
+                                                <a href="/admin/news/{{$post->id}}/edit">
+                                                    {!! $post->isEnglish() ? $post->english_heading : '' !!}
+                                                    {!! $post->isEnglishAndNepali() ? ' - ' : '' !!}
+                                                    {!! $post->isNepali() ? $post->nepali_heading : '' !!}
+                                                </a>
                                                 <br>
                                                 <small>Created
                                                     on: {!! $post->created_at->format('d.m.Y') !!}</small>

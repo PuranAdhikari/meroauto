@@ -27,24 +27,24 @@
                 <a href="/admin"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
             </li>
             <li class="{{@$urls[4] == 'categories' ? 'active' : ''}}">
-                <a href="/admin/categories"><i class="fa fa-tags"></i> <span class="nav-label">Categories</span></a>
+                <a href="/admin/categories"><i class="fa fa-list"></i> <span class="nav-label">Categories</span></a>
             </li>
             <li class="{{@$urls[4] == 'news' ? 'active' : ''}}">
                 <a href="/admin/news"><i class="fa fa-newspaper-o"></i> <span class="nav-label">News</span></a>
             </li>
 
-            <li class="{{(@$urls[4] == 'menus' || @$urls[4] == 'menu-items') ? 'active' : ''}}">
-                <a href="#"><i class="fa fa-list"></i> <span class="nav-label">Menus</span><span
-                            class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li class="{{@$urls[4] == 'menus' ? 'active' : ''}}">
-                        <a href="/admin/menus"><i class="fa fa-list-ol"></i> <span class="nav-label">Menus</span></a>
-                    </li>
-                    <li class="{{@$urls[4] == 'menu-items' ? 'active' : ''}}">
-                        <a href="/admin/menu-items"><i class="fa fa-list-ul"></i> <span class="nav-label">Menu Items</span></a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li class="{{(@$urls[4] == 'menus' || @$urls[4] == 'menu-items') ? 'active' : ''}}">--}}
+                {{--<a href="#"><i class="fa fa-list"></i> <span class="nav-label">Menus</span><span--}}
+                            {{--class="fa arrow"></span></a>--}}
+                {{--<ul class="nav nav-second-level collapse">--}}
+                    {{--<li class="{{@$urls[4] == 'menus' ? 'active' : ''}}">--}}
+                        {{--<a href="/admin/menus"><i class="fa fa-list-ol"></i> <span class="nav-label">Menus</span></a>--}}
+                    {{--</li>--}}
+                    {{--<li class="{{@$urls[4] == 'menu-items' ? 'active' : ''}}">--}}
+                        {{--<a href="/admin/menu-items"><i class="fa fa-list-ul"></i> <span class="nav-label">Menu Items</span></a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
             <li class="{{@$urls[4] == 'uploads' ? 'active' : ''}}">
                 <a href="/admin/uploads"><i class="fa fa-cloud-upload"></i> <span class="nav-label">Uploads</span></a>
             </li>

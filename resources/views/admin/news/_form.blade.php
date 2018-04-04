@@ -1,3 +1,6 @@
+@if(count($errors))
+    <div class="alert alert-danger"><strong>Whoops!</strong> Please review the errors and try again.</div>
+@endif
 <ul class="nav nav-tabs tabs" role="tablist">
     <li role="presentation" class="active"><a role="tab" href="#cat-basic">Basic</a></li>
     <li><a href="#cat-metadata" class="metadata">Publishing & Metadata</a></li>
@@ -7,10 +10,48 @@
 <div class="tab-content">
     <div class="tab-pane fade active in" id="cat-basic" role="tabpanel">
         <div class="form-group">
-            <label for="title" class="col-md-2 control-label">Title *</label>
+            <label for="language" class="col-md-2 control-label">Language *</label>
             <div class="col-md-10">
-                {!! Form::text('title', null, ['class'=>'form-control', 'id'=>'news-title']) !!}
-                {!!$errors->first('title', '<span class="text-danger has-error">:message</span>')!!}
+                {!! Form::select('language', ['English'=>'English Only', 'Nepali'=>'Nepali Only', 'Both'=>'English & Nepali'], null, ['class'=>'form-control', 'id'=>'eng-nep']) !!}
+                {!!$errors->first('language', '<span class="text-danger has-error">:message</span>')!!}
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="english">
+            <div class="form-group">
+                <label for="english_heading" class="col-md-2 control-label">Heading (English) *</label>
+                <div class="col-md-10">
+                    {!! Form::text('english_heading', null, ['class'=>'form-control', 'id'=>'news-title']) !!}
+                    {!!$errors->first('english_heading', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
+            </div>
+        </div>
+        <div class="nepali">
+            <div class="form-group">
+                <label for="nepali_heading" class="col-md-2 control-label">Heading (Nepali) *</label>
+                <div class="col-md-10">
+                    {!! Form::text('nepali_heading', null, ['class'=>'form-control']) !!}
+                    {!!$errors->first('nepali_heading', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="english">
+            <div class="form-group">
+                <label for="english_sub_heading" class="col-md-2 control-label">Sub Heading (English)</label>
+                <div class="col-md-10">
+                    {!! Form::text('english_sub_heading', null, ['class'=>'form-control']) !!}
+                    {!!$errors->first('english_sub_heading', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
+            </div>
+        </div>
+        <div class="nepali">
+            <div class="form-group">
+                <label for="nepali_sub_heading" class="col-md-2 control-label">Sub Heading (Nepali)</label>
+                <div class="col-md-10">
+                    {!! Form::text('nepali_sub_heading', null, ['class'=>'form-control']) !!}
+                    {!!$errors->first('nepali_sub_heading', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
             </div>
         </div>
         <div class="hr-line-dashed"></div>
@@ -39,10 +80,22 @@
             </div>
         </div>
         <div class="hr-line-dashed"></div>
-        <div class="form-group">
-            <label for="description" class="col-md-2 control-label">Description</label>
-            <div class="col-md-10">
-                {!! Form::textarea('description', null, ['class'=>'form-control summernote']) !!}
+        <div class="english">
+            <div class="form-group">
+                <label for="english_content" class="col-md-2 control-label">Content (English) *</label>
+                <div class="col-md-10">
+                    {!! Form::textarea('english_content', null, ['class'=>'form-control summernote']) !!}
+                    {!!$errors->first('english_content', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
+            </div>
+        </div>
+        <div class="nepali">
+            <div class="form-group">
+                <label for="nepali_content" class="col-md-2 control-label">Content (Nepali) *</label>
+                <div class="col-md-10">
+                    {!! Form::textarea('nepali_content', null, ['class'=>'form-control summernote']) !!}
+                    {!!$errors->first('nepali_content', '<span class="text-danger has-error">:message</span>')!!}
+                </div>
             </div>
         </div>
         <div class="hr-line-dashed"></div>
@@ -66,6 +119,10 @@
             <label for="featured" class="col-md-2 control-label">Featured</label>
             <div class="col-md-2">
                 {!! Form::checkbox('featured', null, null, ['class'=>'js-switch']) !!}
+            </div>
+            <label for="main_news" class="col-md-2 control-label">Main News</label>
+            <div class="col-md-2">
+                {!! Form::checkbox('main_news', null, null, ['class'=>'js-switch']) !!}
             </div>
             <label for="published" class="col-md-2 control-label">Published</label>
             <div class="col-md-2">
@@ -141,6 +198,26 @@
                 }
             });
         });
+
+        languageFilter();
+        $('#eng-nep').change(function (e) {
+            languageFilter();
+        });
+
+        function languageFilter() {
+            if ($('#eng-nep').val() === 'English') {
+                $('.nepali').hide();
+                $('.english').show();
+            }
+            else if ($('#eng-nep').val() === 'Nepali') {
+                $('.english').hide();
+                $('.nepali').show();
+            }
+            else if ($('#eng-nep').val() === 'Both') {
+                $('.nepali').show();
+                $('.english').show();
+            }
+        }
 
     });
 </script>

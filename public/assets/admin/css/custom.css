@@ -420,3 +420,7 @@ sub, sup {
 .display-inline{
   display: inline;
 }
+
+.nepali{
+  display: none;
+}

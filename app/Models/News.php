@@ -42,4 +42,19 @@ class News extends Model
     {
         return $this->belongsTo(Category::class, 'category');
     }
+
+    public function isEnglish()
+    {
+        return $this->language != 'Nepali' ? true : false;
+    }
+
+    public function isNepali()
+    {
+        return $this->language != 'English' ? true : false;
+    }
+
+    public function isEnglishAndNepali()
+    {
+        return $this->language == 'Both' ? true : false;
+    }
 }

@@ -25,7 +25,10 @@ class NewsEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'english_heading' => request('language') != 'Nepali' ? 'required' : '',
+            'nepali_heading' => request('language') != 'English' ? 'required' : '',
+            'english_content' => request('language') != 'Nepali' ? 'required' : '',
+            'nepali_content' => request('language') != 'English' ? 'required' : '',
             'slug' => 'required|unique:news,slug,'.$this->news,
             'category' => 'required'
         ];
