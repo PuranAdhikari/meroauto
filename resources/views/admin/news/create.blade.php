@@ -4,13 +4,14 @@
 
     @push('breadcrumb')
     <li>
-        <a href="/admin/posts">Posts</a>
+        <a href="/admin/news">News</a>
     </li>
     <li class="active">
-        <strong>Edit Post</strong>
+        <strong>Create News</strong>
     </li>
     @endpush
-    @include('admin.layouts.partials.breadcrumb', ['title'=>'Edit Post'])
+    @include('admin.layouts.partials.breadcrumb', ['title'=>'Create News'])
+
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -18,9 +19,9 @@
 
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        {!! Form::model($post, ['method'=>'PUT', 'url'=>'/admin/posts/'.$post->id, 'class'=>'form-horizontal']) !!}
+                        {!! Form::open(['url'=>'/admin/news', 'class'=>'form-horizontal']) !!}
                         {{csrf_field()}}
-                        @include('admin.posts._form')
+                        @include('admin.news._form')
                         {!! Form::close() !!}
                     </div>
                 </div>

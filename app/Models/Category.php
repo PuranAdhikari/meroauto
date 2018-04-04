@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $cascadeDeletes = ['children_categories', 'posts'];
+    protected $cascadeDeletes = ['children_categories', 'news'];
 
     protected $guarded = [];
 
@@ -41,9 +41,9 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent');
     }
 
-    public function posts()
+    public function news()
     {
-        return $this->hasMany(Post::class, 'category');
+        return $this->hasMany(News::class, 'category');
     }
 
     public function isAnyStepChildOf($category)

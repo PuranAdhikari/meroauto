@@ -29,12 +29,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::post('/categories/delete', 'CategoriesController@bulkDelete');
     Route::get('/categories/slug/{title}', 'CategoriesController@slug');
 
-    #Posts
-    Route::resource('/posts', 'PostsController');
-    Route::get('/posts/toggle-status/{id}', 'PostsController@toggleStatus');
-    Route::get('/posts/toggle-featured/{id}', 'PostsController@toggleFeatured');
-    Route::post('/posts/delete', 'PostsController@bulkDelete');
-    Route::get('/posts/slug/{title}', 'PostsController@slug');
+    #News
+    Route::resource('/news', 'NewsController');
+    Route::get('/news/toggle-status/{id}', 'NewsController@toggleStatus');
+    Route::get('/news/toggle-featured/{id}', 'NewsController@toggleFeatured');
+    Route::post('/news/delete', 'NewsController@bulkDelete');
+    Route::get('/news/slug/{title}', 'NewsController@slug');
 
     #Menus
     Route::resource('/menus', 'MenusController');

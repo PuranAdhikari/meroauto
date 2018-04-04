@@ -28,8 +28,8 @@ class CreateMenuItemsTable extends Migration
 
             $table->string('menu_item_type');
 
-            $table->integer('post')->unsigned()->nullable();
-            $table->foreign('post')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('news')->unsigned()->nullable();
+            $table->foreign('news')->references('id')->on('news')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('page')->unsigned()->nullable();
             $table->foreign('page')->references('id')->on('pages')->onUpdate('cascade')->onDelete('cascade');

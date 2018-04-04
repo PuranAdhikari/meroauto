@@ -29,8 +29,8 @@
             <li class="{{@$urls[4] == 'categories' ? 'active' : ''}}">
                 <a href="/admin/categories"><i class="fa fa-tags"></i> <span class="nav-label">Categories</span></a>
             </li>
-            <li class="{{@$urls[4] == 'posts' ? 'active' : ''}}">
-                <a href="/admin/posts"><i class="fa fa-newspaper-o"></i> <span class="nav-label">Posts</span></a>
+            <li class="{{@$urls[4] == 'news' ? 'active' : ''}}">
+                <a href="/admin/news"><i class="fa fa-newspaper-o"></i> <span class="nav-label">News</span></a>
             </li>
 
             <li class="{{(@$urls[4] == 'menus' || @$urls[4] == 'menu-items') ? 'active' : ''}}">

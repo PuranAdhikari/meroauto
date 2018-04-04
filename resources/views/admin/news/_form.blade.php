@@ -9,7 +9,7 @@
         <div class="form-group">
             <label for="title" class="col-md-2 control-label">Title *</label>
             <div class="col-md-10">
-                {!! Form::text('title', null, ['class'=>'form-control', 'id'=>'post-title']) !!}
+                {!! Form::text('title', null, ['class'=>'form-control', 'id'=>'news-title']) !!}
                 {!!$errors->first('title', '<span class="text-danger has-error">:message</span>')!!}
             </div>
         </div>
@@ -17,21 +17,21 @@
         <div class="form-group">
             <label for="slug" class="col-md-2 control-label">Slug *</label>
             <div class="col-md-10">
-                {!! Form::text('slug', null, ['class'=>'form-control', 'id'=>'post-slug']) !!}
+                {!! Form::text('slug', null, ['class'=>'form-control', 'id'=>'news-slug']) !!}
                 {!!$errors->first('slug', '<span class="text-danger has-error">:message</span>')!!}
             </div>
         </div>
         <div class="hr-line-dashed"></div>
         <div class="form-group">
-            <label for="parent_post" class="col-md-2 control-label">Category *</label>
+            <label for="parent_news" class="col-md-2 control-label">Category *</label>
             <div class="col-md-10">
                 <select name="category" class="form-control">
                     <option value="">--Select One--</option>
                     @foreach(\App\Models\Category::whereNull('parent')->get() as $cat)
-                        <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($post) && ($cat->id == $post->category))) ? 'selected' : ''}}>{{$cat->name}}@if(!$cat->published)
+                        <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($news) && ($cat->id == $news->category))) ? 'selected' : ''}}>{{$cat->name}}@if(!$cat->published)
                                 [**Unpublished Category] @endif</option>
                         @if(count($cat->children_categories))
-                            @include('admin.posts.__category_dropdown', ['cat'=>$cat->children_categories, 'level'=>1])
+                            @include('admin.news.__category_dropdown', ['cat'=>$cat->children_categories, 'level'=>1])
                         @endif
                     @endforeach
                 </select>
@@ -50,11 +50,11 @@
             <label for="image" class="col-md-2 control-label">Image</label>
             <div class="col-md-10">
                 {!! Form::hidden('image', null, ['class'=>'form-control', 'placeholder'=>'Choose Image', 'data-rule-maxlength'=>250]) !!}
-                <a class="btn btn-default btn_upload_image {{isset($post) && $post->image ? 'hide' : ''}}"
+                <a class="btn btn-default btn_upload_image {{isset($news) && $news->image ? 'hide' : ''}}"
                    file_type="image"
                    selecter="image">Upload <i class="fa fa-cloud-upload"></i></a>
-                @if(isset($post) && $post->image)
-                    <div class="uploaded_image"><img src="{{\App\Models\Upload::find($post->image)->path()}}"><i
+                @if(isset($news) && $news->image)
+                    <div class="uploaded_image"><img src="{{\App\Models\Upload::find($news->image)->path()}}"><i
                                 title="Remove Image" class="fa fa-times"></i></div>
                 @else
                     <div class="uploaded_image hide"><img src=""><i title="Remove Image" class="fa fa-times"></i></div>
@@ -77,18 +77,18 @@
         <div class="form-group">
             <label for="start_publishing" class="col-md-2 control-label">Start Publishing</label>
             <div class="col-md-4">
-                {!! Form::text('start_publishing', isset($post) && $post->start_publishing ? $post->start_publishing->format('d/m/Y h:i a') : Carbon\Carbon::now()->format('d/m/Y h:i a'), ['class'=>'form-control datetimepicker']) !!}
+                {!! Form::text('start_publishing', isset($news) && $news->start_publishing ? $news->start_publishing->format('d/m/Y h:i a') : Carbon\Carbon::now()->format('d/m/Y h:i a'), ['class'=>'form-control datetimepicker']) !!}
             </div>
             <label for="finish_publishing" class="col-md-2 control-label">Finish Publishing</label>
             <div class="col-md-4">
-                {!! Form::text('finish_publishing', isset($post) && $post->finish_publishing ? $post->finish_publishing->format('d/m/Y h:i a') : null, ['class'=>'form-control datetimepicker']) !!}
+                {!! Form::text('finish_publishing', isset($news) && $news->finish_publishing ? $news->finish_publishing->format('d/m/Y h:i a') : null, ['class'=>'form-control datetimepicker']) !!}
             </div>
         </div>
         <div class="hr-line-dashed"></div>
         <div class="form-group">
             <label for="meta_title" class="col-md-2 control-label">Meta Title</label>
             <div class="col-md-10">
-                {!! Form::text('meta_title', null, ['class'=>'form-control', 'id'=>'post-meta-title']) !!}
+                {!! Form::text('meta_title', null, ['class'=>'form-control', 'id'=>'news-meta-title']) !!}
             </div>
         </div>
         <div class="hr-line-dashed"></div>
@@ -119,7 +119,7 @@
 <div class="hr-line-dashed"></div>
 <div class="form-group">
     <div class="col-sm-4 col-sm-offset-2">
-        <a class="btn btn-white" href="/admin/posts"
+        <a class="btn btn-white" href="/admin/news"
            onclick="return confirm('Are you sure? The unsaved changes will be discarded.')">Cancel</a>
         <button class="btn btn-primary" type="submit">Save</button>
     </div>
@@ -129,15 +129,15 @@
 
 <script>
     $(document).ready(function () {
-        $("#post-title").change(function () {
+        $("#news-title").change(function () {
             var title = $(this).val();
             $.ajax({
                 type: "get",
-                url: '/admin/posts/slug/' + title,
+                url: '/admin/news/slug/' + title,
                 cache: false,
                 success: function (result) {
-                    $('#post-slug').val(result);
-                    $('#post-meta-title').val(title);
+                    $('#news-slug').val(result);
+                    $('#news-meta-title').val(title);
                 }
             });
         });
