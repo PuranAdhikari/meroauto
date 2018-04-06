@@ -14,7 +14,8 @@ class NewsController extends Controller
      *
      */
     public function newsListing(){
-        return view('frontend.listing');
+        $news = News::orderBy('created_at', 'desc')->get();
+        return view('frontend.listing', compact('news'));
     }
 
     /**
@@ -22,7 +23,7 @@ class NewsController extends Controller
      *
      */
     public function newsListingTop(){
-        return view('frontend.listing');
+        return view('frontend.topnewslisting');
     }
 
     /**
