@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Observers\RecordFingerPrintObserver;
+use App\User;
+
 use Carbon\Carbon;
 use Faker\Provider\Image;
 use Illuminate\Database\Eloquent\Model;
@@ -57,5 +59,10 @@ class News extends Model
     public function isEnglishAndNepali()
     {
         return $this->language == 'Both' ? true : false;
+    }
+    #To get Author Username with id
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }

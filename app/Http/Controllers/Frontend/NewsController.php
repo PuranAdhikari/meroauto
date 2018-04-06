@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
+use App\User;
 use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -46,7 +47,8 @@ class NewsController extends Controller
      *
      */
     public function newsByAuthor(){
-        return 0;
+        $news= News::all();
+        return view('frontend.newslistingbyauthor', compact('news'));
     }
 
     /**
@@ -54,7 +56,7 @@ class NewsController extends Controller
      *
      */
     public function newsByCategory(){
-        return 0;
+        return view('frontend.newslistingbycategory');
     }
 
     /**
