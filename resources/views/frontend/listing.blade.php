@@ -216,14 +216,13 @@
             <div class="col-lg-12 col-md-12">
                 <div class="masonry columns-3">
                     <div class="grid-sizer"></div>
-
-                    @foreach($news as $single)
-                        <!-- Blog single Item -->
-                            <div class="masonry-item clearfix">
+                @foreach($news as $single)
+                        <div class="masonry-item clearfix">
                             <div class="blog-2">
                                 <div class="blog-image">
                                     @if($single->image)
-                                        <img class="img-responsive" src="{{ \App\Models\Upload::findOrFail($single->image)->path() }}" alt="">
+                                        <img class="img-responsive"
+                                             src="{{ \App\Models\Upload::findOrFail($single->image)->path() }}" alt="">
                                     @endif
                                     <div class="date">
                                         <span>{{ date('M d', strtotime($single->updated_at)) }}</span>
@@ -264,11 +263,11 @@
                                         <div class="separator"></div>
                                         <p>
                                             @if( trim($single->language) == "Both")
-                                                {!! str_limit($single->nepali_content, 100)  !!}
+                                                {!! str_limit(strip_tags($single->nepali_content), 100)  !!}
                                             @elseif( trim($single->language) == "Nepali")
-                                                {!! str_limit($single->nepali_content, 100)  !!}
+                                                {!! str_limit(strip_tags($single->nepali_content), 100)  !!}
                                             @elseif( trim($single->language) == "English")
-                                                {!! str_limit($single->english_content, 100)  !!}
+                                                {!! str_limit(strip_tags($single->english_content), 100) !!}
                                             @else
                                                 <a>Language type Undefined</a>
                                             @endif
@@ -279,7 +278,6 @@
                         </div>
                         <!-- Blog single Item -->
                     @endforeach
-
                 </div>
                 <div class="pagination-nav text-center">
                     <ul class="pagination">
