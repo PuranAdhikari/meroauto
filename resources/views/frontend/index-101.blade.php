@@ -78,7 +78,7 @@
                     <div class="topbar-left text-left">
                         <ul class="list-inline">
                             <li><i class="fa fa-envelope-o"> </i> support@meroauto.com</li>
-                            <li><i class="fa fa-clock-o"></i> Mon - fri 8.00 - 18.00. Saturday CLOSED</li>
+                            <li><i class="fa fa-clock-o"></i> sun - fri 8.00 - 18.00. Saturday CLOSED</li>
                         </ul>
                     </div>
                 </div>
