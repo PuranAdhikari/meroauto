@@ -65,12 +65,12 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('/', 'NewsController@index');
 
     #News Routes
-    Route::get('/news', 'NewsController@newsListing');
-    Route::get('/news/top', 'NewsController@newsListingTop');
-    Route::get('/{slug}/en', 'NewsController@newsSingleInEnglish');
-    Route::get('/{slug}/np', 'NewsController@newsSingleInNepali');
-    Route::get('/news/{author}', 'NewsController@newsByAuthor');
-    Route::get('/news/category/{category}', 'NewsController@newsByCategory');
-    Route::get('/news/tag/{tagname}', 'NewsController@newsByTagname');
+    Route::get('/news', 'NewsController@newsListing'); // Sishir Rijal
+    Route::get('/news/top', 'NewsController@newsListingTop'); //Sishir Rijal
+    Route::get('/{slug}/en', 'NewsController@newsSingleInEnglish'); //Suman Niraula
+    Route::get('/{slug}/np', 'NewsController@newsSingleInNepali'); //Suman Niraula
+    Route::get('/news/{author}', 'NewsController@newsByAuthor'); //Shishir Gartaula
+    Route::get('/news/category/{category}', 'NewsController@newsByCategory'); //Shishir Gartaula
+    Route::get('/news/tag/{tagname}', 'NewsController@newsByTagname'); //Sishir Rijal
 
 });
