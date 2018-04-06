@@ -64,4 +64,13 @@ Route::group(['namespace' => 'Frontend'], function (){
     #Homepage Route
     Route::get('/', 'NewsController@index');
 
+    #News Routes
+    Route::get('/news', 'NewsController@newsListing');
+    Route::get('/news/top', 'NewsController@newsListingTop');
+    Route::get('/{slug}/en', 'NewsController@newsSingleInEnglish');
+    Route::get('/{slug}/np', 'NewsController@newsSingleInNepali');
+    Route::get('/news/{author}', 'NewsController@newsByAuthor');
+    Route::get('/news/category/{category}', 'NewsController@newsByCategory');
+    Route::get('/news/tag/{tagname}', 'NewsController@newsByTagname');
+
 });
