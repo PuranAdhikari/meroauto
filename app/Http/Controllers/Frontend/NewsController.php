@@ -14,7 +14,7 @@ class NewsController extends Controller
      *
      */
     public function newsListing(){
-        return 0;
+        return view('frontend.listing');
     }
 
     /**
@@ -22,7 +22,7 @@ class NewsController extends Controller
      *
      */
     public function newsListingTop(){
-        return 0;
+        return view('frontend.listing');
     }
 
     /**
