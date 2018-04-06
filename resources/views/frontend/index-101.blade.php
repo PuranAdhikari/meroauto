@@ -207,11 +207,6 @@
         </nav>
         <!-- menu end -->
     </div>
-    <!-- <div class="container" style="margin-top: 5px; margin-bottom: 25px;">
-
-     <img src="images/add_NIC.gif" width="100%">
-    -->
-    </div>
 </header>
 <div class="col-md-12" style=" margin-top: -1em;">
     <div class="container">
