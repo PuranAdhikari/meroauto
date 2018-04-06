@@ -350,12 +350,13 @@
                                 @endif
                             </div>
                             <div class="recent-post-info">
+
                                 @if($recent->language == 'Both')
-                                    <p>{{ $recent->nepali_heading }}</p>
+                                    <a href="#">{{ $recent->nepali_heading }}</a>
                                 @elseif($recent->language == 'English')
-                                    <p>{{ $recent->english_heading }}</p>
+                                    <a href="#">{{ $recent->english_heading }}</a>
                                 @else
-                                    <p>{{ $recent->nepali_heading }}</p>
+                                    <a href="#">{{ $recent->nepali_heading }}</a>
                                 @endif
                             </div>
                         </div>
