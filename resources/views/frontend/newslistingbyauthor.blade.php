@@ -240,7 +240,7 @@
                                     <div class="blog-admin-main">
                                         <div class="blog-admin">
                                             <img class="img-responsive" src="images/team/01.jpg" alt="">
-                                            <span><h6>{{$single->user->name}}</h6></span>
+                                            <span>{{$single->user->name}}</span>
                                         </div>
                                         <div class="blog-meta pull-right">
                                             <ul>

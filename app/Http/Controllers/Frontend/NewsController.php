@@ -38,10 +38,7 @@ class NewsController extends Controller
     {
         $englishnews = News::findOrFail($slug);
 
-
         return view('frontend.blog-single', compact('englishnews'));
-
-
     }
 
     /**
@@ -53,9 +50,13 @@ class NewsController extends Controller
 
         $nepalinews = News::where('slug', $slug)->first();
 
+        // get previous user id
+        $previous = News::where('id', '<', $nepalinews->id)->orderBy('id', 'desc')->first();
 
-        return view('frontend.blog-single', compact('nepalinews'));
+        // get next user id
+        $next = News::where('id', '>', $nepalinews->id)->orderBy('id', 'asc')->first();
 
+        return view('frontend.blog-single', compact('nepalinews', 'previous', 'next'));
     }
 
     /**

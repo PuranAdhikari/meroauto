@@ -256,9 +256,10 @@
                     </div>
                     <div class="entry-meta">
                         <ul>
-                        <li><a href="/news/author/{{$nepalinews->user->id}}"><i class=""></i>
-                        {{$nepalinews->user->name}}
-                        </a> /</li>
+                            <li><a href="/news/author/{{$nepalinews->user->id}}"><i class="fa fa-user"></i>
+                                    {{$nepalinews->user->name}}
+                                </a> /
+                            </li>
                             <li><a href="#"><i class="fa fa-comments-o"></i> 5 Comments</a> /</li>
                             <li><a href="#"><i class="fa fa-folder-open"></i> {!! $nepalinews->created_at !!}</a> /</li>
                             <li><a href="#"><i class="fa fa-heart-o"></i>10</a></li>
@@ -266,10 +267,6 @@
                     </div>
                     <div class="entry-content">
                         <p> {!! $nepalinews->nepali_content !!} </p>
-                        <!-- <blockquote>
-                        <cite> – </cite>
-                        </blockquote> -->
-
                     </div>
                     <div class="entry-share clearfix">
                         <div class="share pull-right"><a href="#"> <i class="fa fa-share-alt"></i> </a>
@@ -288,24 +285,42 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="navigation-next">
-                                <a href="#">
-                                    <img class="img-responsive" src="images/bg/01.jpg" alt="">
-                                    <div class="port-arrow">
-                                        <i class="fa fa-angle-left"></i>
-                                    </div>
-                                    <span>BLOGPOST WITH IMAGE</span>
-                                </a>
+                                @if( $previous )
+                                    <a href="/news/{{ $previous->slug }}/np">
+                                        @if($previous->image)
+                                            <img class="img-responsive"
+                                                 src="{{ \App\Models\Upload::findOrFail($previous->image)->path() }}"
+                                                 alt="">
+                                        @endif
+                                        <div class="port-arrow">
+                                            <i class="fa fa-angle-left"></i>
+                                        </div>
+                                        <span>{!! $previous->nepali_heading !!}</span>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="navigation-previous pull-right text-right">
-                                <a href="#">
-                                    <img class="img-responsive" src="images/bg/06.jpg" alt="">
-                                    <div class="port-arrow">
-                                        <i class="fa fa-angle-right"></i>
-                                    </div>
-                                    <span>BLOGPOST WITH IMAGE</span>
-                                </a>
+                                @if( $next )
+                                    <a href="/news/{{ $next->slug }}/np">
+                                        @if($next->image)
+                                            <img class="img-responsive"
+                                                 src="{{ \App\Models\Upload::findOrFail($next->image)->path() }}"
+                                                 alt="">
+                                        @endif
+                                        <div class="port-arrow">
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
+                                        @if( $next->language == 'Both' or $next->language == 'Nepali')
+                                            <span>{!! $next->nepali_heading !!}</span>
+                                        @elseif( $next->language == 'English' )
+                                            <span>{!! $next->english_heading !!}</span>
+                                        @else
+                                            <span>No language specified</span>
+                                        @endif
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
