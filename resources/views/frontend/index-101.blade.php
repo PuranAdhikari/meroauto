@@ -118,7 +118,7 @@
                             <!-- menu logo -->
                             <ul class="menu-logo">
                                 <li>
-                                    <a href="index.html"><img id="logo_dark_img"
+                                    <a href="http://demo.meroauto.com/"><img id="logo_dark_img"
                                                               src="{{ URL::asset('template/images/Meroauto.png') }}"
                                                               alt="logo"> </a>
                                 </li>
@@ -130,7 +130,7 @@
                                     <a href="javascript:void(0)">Home</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Cars and Bikes <i
+                                    <a href="news/category/auto-news">Cars and Bikes <i
                                                 class="fa fa-angle-down fa-indicator"></i></a>
                                     <!-- drop down full width -->
                                     <div class="drop-down menu-bg grid-col-12">
@@ -177,18 +177,18 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Banking and Insurance</a>
+                                    <a href="news/category/banking-and-insurance">Banking and Insurance</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Infrastructure</a>
+                                    <a href="news/category/infrastructure">Infrastructure</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Feature</a>
+                                    <a href="news/category/feature">Feature</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Interview</a>
+                                    <a href="news/category/interview">Interview</a>
                                 </li>
-                                <li><a href="javascript:void(0)">More <i
+                                <li><a href="news/category/more">More <i
                                                 class="fa fa-angle-down fa-indicator"></i></a>
                                     <!-- drop down multilevel  -->
                                     <ul class="drop-down-multilevel">
@@ -220,20 +220,21 @@
                                  alt="Image Not Found" style="width:750px; height:400px;">
                         @endif
                         <div class="caption">
-                            <h1><a href=""><p style="line-height: 50px;">{{ $featuredNews->english_heading }}</p></a>
+                            <h1><a href="/news/{{$featuredNews->slug}}/{{$featuredNews->isEnglish() ? 'en' : 'np'}}"><p style="line-height: 50px;">{{ $featuredNews->nepali_heading }}</p></a>
                             </h1>
                             <br>
-                            <p>{{ $featuredNews->english_content }}</p>
-                            <a class="button"> see more</a>
+                            <p>{!! str_limit(strip_tags($featuredNews->nepali_content), 250) !!} </p>
+                            <a href="/news/{{$featuredNews->slug}}/{{$featuredNews->isEnglish() ? 'en' : 'np'}}" r class="button" style="background-color: #E10916;"> see more</a>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-6 col-lg-4" style="margin-top: 15px;">
+            <div class="col-sm-4 col-md-6 col-lg-4" style="margin-top: 15px; ">
                 <div class="search-block">
                     <div class="row no-gutter">
                         <div class="col-lg-12 col-md-12 text-center">
-                            <h3 class="title text-white"><i class="fa fa-search"></i>कार खोज
+                            <h3 class="title text-white" style="background-color: #E10916;"><i class="fa fa-search"></i>CAR
+                                SEARCH
                             </h3>
                             </br>
                         </div>
@@ -260,24 +261,23 @@
                     <input style="margin-top: 29px;" class="form-control" type="number" name="minprice"
                            placeholder="Max Price">
                 </div>
-                <a class="button" href="#" style="margin-top: 20px;  margin-left:17px; width:90%">खोज्नुहोस </a>
+                <a class="button" href="#"
+                   style="margin-top: 20px;  margin-left:17px; width:90%; background-color: #E10916;">SEARCH </a>
             </div>
 
         </div>
     </div>
 </div>
 
-<div class="clearfix"></div>
 
 <!--=================================
  custom block -->
-<section class="latest-blog gray-bg page-section-ptb">
+<section class="latest-blog gray-bg page-section-ptb" >
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="section-title">
-                    <span>मुख्य खबर पढ्नुस </span>
-                    <h2>मुख्य खबर </h2>
+                    <a href="ews/category/main-news">   <h2>MAIN NEWS  </h2> </a>
                     <div class="separator"></div>
                 </div>
             </div>
@@ -287,9 +287,13 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="blog-2">
                         <div class="blog-image">
-                            <img class="img-responsive" src="{{ URL::asset('template/images/car/01.jpg') }}" alt="">
+                            @if($news->image)
+                                <img src="{{ \App\Models\Upload::findOrFail($news->image)->path() }}"
+                                     alt="Image Not Found" style="height:300px; width:100%;">
+                            @endif
+
                             <div class="date">
-                                <span>aug 17</span>
+                                <span style="background-color: #E10916;">aug 17</span>
                             </div>
                         </div>
                         <div class="blog-content">
@@ -301,14 +305,14 @@
                                 </div>
                                 <div class="blog-meta pull-right">
                                     <ul>
-                                        <li><a href="#"> <i class="fa fa-comment"></i><br/> 123</a></li>
-                                        <li class="share"><a href="#"> <i class="fa fa-share-alt"></i><br/> ...</a>
+                                        <li><a href="#"> <i class="fa fa-comment"></i><br /> 123</a></li>
+                                        <li class="share"><a href="#"> <i class="fa fa-share-alt"></i><br /> ...</a>
                                             <div class="blog-social">
                                                 <ul>
-                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                                    <li> <a href="#"><i class="fa fa-facebook"></i></a> </li>
+                                                    <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
+                                                    <li> <a href="#"><i class="fa fa-instagram"></i></a> </li>
+                                                    <li> <a href="#"><i class="fa fa-pinterest-p"></i></a> </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -316,20 +320,34 @@
                                 </div>
                             </div>
                             <div class="blog-description text-center">
-                                <a href="#"> {{ $news->english_heading }}</a>
+                                @if($news->language == 'Both')
+                                    <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $recent->nepali_heading }}</a>
+                                @elseif($news->language == 'English')
+                                    <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $news->english_heading }}</a>
+                                @else
+                                    <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $news->nepali_heading }}</a>
+                                @endif
                                 <div class="separator"></div>
-                                <p style="height: 80px; width: 100%;">{{ $news->nepali_heading }} </p>
+                                <p style="font-weight: normal">
+                                    @if($news->language == 'Both')
+                                        {{ str_limit(strip_tags($news->nepali_content),150) }}
+                                    @elseif($news->language == 'English')
+                                        {{ str_limit(strip_tags( $news->english_content),150) }}
+                                    @else
+                                        {{ str_limit(strip_tags( $news->nepali_content),150) }}
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
 
-            <div class="col-lg-4 col-md-4">
+            @endforeach
+            <div class="col-lg-4 col-md-4" style="border:1px solid #dedede;">
                 <div class="search-block">
                     <div class="row no-gutter">
-                        <div class="col-lg-12 col-md-12 text-center">
-                            <h3 class="title text-whie">RECENT NEWS</h3>
+                        <div class="col-lg-12 col-md-12 text-center" >
+                            <h3 class="title text-whie" style="background-color: #E10916; color:white;">RECENT NEWS</h3>
                             </br>
                         </div>
                     </div>
@@ -347,11 +365,11 @@
                             <div class="recent-post-info">
 
                                 @if($recent->language == 'Both')
-                                    <a href="#">{{ $recent->nepali_heading }}</a>
+                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }} </p> </a>
                                 @elseif($recent->language == 'English')
-                                    <a href="#">{{ $recent->english_heading }}</a>
+                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->english_heading }}</p> </a>
                                 @else
-                                    <a href="#">{{ $recent->nepali_heading }}</a>
+                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }} </p> </a>
                                 @endif
                             </div>
                         </div>
@@ -362,15 +380,22 @@
     </div>
 </section>
 
+
 <section class="latest-blog gray-bg page-section-ptb">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="section-title">
+                    <a href= "news/category/auto-news"> <h2>AUTO NEWS  </h2> </a>
+                    <div class="separator"></div>
+                </div>
+            </div>
             <?php $i = 0 ?>
             @foreach($recentNews as $news)
                 @if($news->belongingCategory->slug == 'auto-news')
                     <?php $i++ ?>
                     @if($i == 3)
-                        <?php break; ?>
+                        @break
                     @endif
                     <div class="col-lg-4 col-md-4">
                         <div class="blog-2">
@@ -378,10 +403,10 @@
                                 @if($news->image)
                                     <img class="img-responsive"
                                          src="{{\App\Models\Upload::findOrFail($news->image)->path()}}"
-                                         alt="Image Not Found">
+                                         alt="Image Not Found" style="height:300px; width:100%;">
                                 @endif
                                 <div class="date">
-                                    <span>{{ date('M d', strtotime($news->updated_at)) }}</span>
+                                    <span style="background-color: #E10916;">{{ date('M d', strtotime($news->updated_at)) }}</span>
                                 </div>
                             </div>
                             <div class="blog-content">
@@ -409,14 +434,29 @@
                                     </div>
                                 </div>
                                 <div class="blog-description text-center">
-                                    <a href="#">{{ $news->headline }}</a>
+                                    @if($news->language == 'Both')
+                                        <a href="/news/{{$featuredNews->slug}}/{{$featuredNews->isEnglish() ? 'en' : 'np'}}">{{ $news->nepali_heading }}</a>
+                                    @elseif($news->language == 'English')
+                                        <a href="/news/{{$featuredNews->slug}}/{{$featuredNews->isEnglish() ? 'en' : 'np'}}
+
+
+                                                ">{{ $news->english_heading }}</a>
+                                    @else
+                                        <a href="/news/{{$featuredNews->slug}}/{{$featuredNews->isEnglish() ? 'en' : 'np'}}
+
+
+                                                ">{{ $news->nepali_heading }}</a>
+                                    @endif
                                     <div class="separator"></div>
-                                    <p>ट्राफिक समस्या समाधानका लागि सडक बनाउनु भनेको आगो निभाउन मट्टीतेल प्रयोग
-                                        गर्नुजस्तै
-                                        हो
-                                        भन्ने बोगर्टा (कोलम्बिया) का पूर्वमेयर एनरीके पेनालोजाकोभनाइलाई नेपाली सडक
-                                        व्यवस्थापनमा
-                                        दाँज्न सकिन्छ </p>
+                                    <p>
+                                        @if($news->language == 'Both')
+                                            {{ str_limit(strip_tags($news->nepali_content),150) }}
+                                        @elseif($news->language == 'English')
+                                            {{ str_limit(strip_tags( $news->english_content),150) }}
+                                        @else
+                                            {{ str_limit(strip_tags( $news->nepali_content),150) }}
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +472,6 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="section-title">
-                    <span>Top news  </span>
                     <h2>Banking and Insurance </h2>
                     <div class="separator"></div>
                 </div>
@@ -455,7 +494,7 @@
                                         @if($news->image)
                                             <img class="img-responsive"
                                                  src="{{\App\Models\Upload::findOrFail($news->image)->path()}}"
-                                                 alt="Image Not Found">
+                                                 alt="Image Not Found" style="height:300px; width:100%;">
                                         @endif
                                         <div class="date">
                                             <span>{{ date('M d', strtotime($news->updated_at)) }}</span>
@@ -488,15 +527,22 @@
                                             </div>
                                         </div>
                                         <div class="blog-description text-center">
-                                            <a href="#">{{ $news->headline }}</a>
+                                            @if($news->language == 'Both')
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}"> <p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                            @elseif($recent->language == 'English')
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->english_heading }}</p></a>
+                                            @else
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                            @endif
                                             <div class="separator"></div>
-                                            <p>ट्राफिक समस्या समाधानका लागि सडक बनाउनु भनेको आगो निभाउन मट्टीतेल प्रयोग
-                                                गर्नुजस्तै
-                                                हो
-                                                भन्ने बोगर्टा (कोलम्बिया) का पूर्वमेयर एनरीके पेनालोजाकोभनाइलाई नेपाली
-                                                सडक
-                                                व्यवस्थापनमा
-                                                दाँज्न सकिन्छ </p>
+                                            <p>@if($news->language == 'Both')
+                                                    {{ str_limit(strip_tags($news->nepali_content),150) }}
+                                                @elseif($news->language == 'English')
+                                                    {{ str_limit(strip_tags( $news->english_content),150) }}
+                                                @else
+                                                    {{ str_limit(strip_tags( $news->nepali_content),150) }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -511,8 +557,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="section-title">
-                            <span>Read Tips and Interviews</span>
-                            <h2>TIPS AND INTERVIEWS </h2>
+                            <a href="news/category/tips-and-interviews"><h2>TIPS AND INTERVIEWS </h2></a>
                             <div class="separator"></div>
                         </div>
                     </div>
@@ -531,7 +576,7 @@
                                         @if($news->image)
                                             <img class="img-responsive"
                                                  src="{{\App\Models\Upload::findOrFail($news->image)->path()}}"
-                                                 alt="Image Not Found">
+                                                 alt="Image Not Found" style="height:300px; width:100%;">
                                         @endif
                                         <div class="date">
                                             <span>{{ date('M d', strtotime($news->updated_at)) }}</span>
@@ -564,26 +609,34 @@
                                             </div>
                                         </div>
                                         <div class="blog-description text-center">
-                                            <a href="#">{{ $news->headline }}</a>
+                                            @if($news->language == 'Both')
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $news->nepali_heading }}</a>
+                                            @elseif($news->language == 'English')
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $news->english_heading }}</a>
+                                            @else
+                                                <a href="/news/{{$news->slug}}/{{$news->isEnglish() ? 'en' : 'np'}}">{{ $news->nepali_heading }}</a>
+                                            @endif
                                             <div class="separator"></div>
-                                            <p>ट्राफिक समस्या समाधानका लागि सडक बनाउनु भनेको आगो निभाउन मट्टीतेल प्रयोग
-                                                गर्नुजस्तै
-                                                हो
-                                                भन्ने बोगर्टा (कोलम्बिया) का पूर्वमेयर एनरीके पेनालोजाकोभनाइलाई नेपाली
-                                                सडक
-                                                व्यवस्थापनमा
-                                                दाँज्न सकिन्छ </p>
+                                            <p>
+                                                @if($news->language == 'Both')
+                                                    {{ str_limit(strip_tags($news->nepali_content),150) }}
+                                                @elseif($news->language == 'English')
+                                                    {{ str_limit(strip_tags( $news->english_content),150) }}
+                                                @else
+                                                    {{ str_limit(strip_tags( $news->nepali_content),150) }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endif
                     @endforeach
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-4 col-md-4" style="border:1px solid #dedede;">
                         <div class="search-block">
                             <div class="row no-gutter">
                                 <div class="col-lg-12 col-md-12 text-center">
-                                    <h3 class="title text-white">INTERVIEWS</h3>
+                                    <a href="news/category/interviews"> <h3 class="title text-white" style="background-color: #E10916;">INTERVIEWS</h3></a>
                                     </br>
                                 </div>
                             </div>
@@ -599,143 +652,150 @@
                                             @endif
                                         </div>
                                         <div class="recent-post-info">
-                                            @if($recent->language == 'Both')
-                                                <p>{{ $recent->nepali_heading }}</p>
-                                            @elseif($recent->language == 'English')
-                                                <p>{{ $recent->english_heading }}</p>
-                                            @else
-                                                <p>{{ $recent->nepali_heading }}</p>
-                                            @endif
+                                            <p style="font-weight:bold; color:black; text-align: justify;">
+                                                @if($recent->language == 'Both')
+                                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}">  {{ $recent->nepali_heading }}</a>
+                                                @elseif($recent->language == 'English')
+                                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"> {{ $recent->english_heading }}</a>
+                                                @else
+                                                    <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"> {{ $recent->nepali_heading }}</a>
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4" style="border-left:1px solid white;">
+                    <div class="col-lg-4 col-md-4" style="border:1px solid #dedede;">
+
                         <div class="search-block">
                             <div class="row no-gutter">
                                 <div class="col-lg-12 col-md-12 text-center">
-                                    <h3 class="title text-white">TIPS</h3>
+                                    <h3 class="title text-white" style="background-color: #E10916;">TIPS</h3>
                                     </br>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="tips">
-                            <li>ksfdgserng</li>
-                            <li>ksfdgserng</li>
-                            <li>ksfdgserng</li>
-                            <li>ksfdgserng</li>
+                        <div class="scroll" style="overflow-y: scroll; height:400px;">
+                            <div class="tips">
+                                <li>ksfdgserng</li>
+                                <li>ksfdgserng</li>
+                                <li>ksfdgserng</li>
+                                <li>ksfdgserng</li>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <div class="col-md-12" style="">
-            <div class="container">
 
-                <div class="row">
-                    <div class="col-sm-4 col-md-5 col-lg-4" style="">
-                        <div class="search-block">
-                            <div class="row no-gutter">
-                                <div class="col-lg-12 col-md-12 text-center">
-                                    <h3 class="title text-white"> Traffic </h3>
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12"
-                                         style="overflow-y: scroll; height:300px;">
-                                        @foreach($recentNews as $recent)
-                                            @if($recent->belongingCategory->slug == 'traffic')
-                                                <div class="recent-post" style="">
-                                                    <div class="recent-post-image">
-                                                        @if($recent->image)
-                                                            <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
-                                                                 alt="Image Not Found" width="50">
-                                                        @endif
-                                                    </div>
-                                                    <div class="recent-post-info">
-                                                        @if($recent->language == 'Both')
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @elseif($recent->language == 'English')
-                                                            <p>{{ $recent->english_heading }}</p>
-                                                        @else
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @endif
-                                                    </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-5 col-lg-4" style="border:1px solid #dedede;">
+                    <div class="search-block">
+                        <div class="row no-gutter">
+                            <div class="col-lg-12 col-md-12 text-center">
+                                <a href="news/category/traffic"><h3 class="title text-white" style="background-color: #E10916;"> Traffic </h3></a>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12"
+                                     style="overflow-y: scroll; height:300px;">
+                                    @foreach($recentNews as $recent)
+                                        @if($recent->belongingCategory->slug == 'traffic')
+                                            <div class="recent-post" style="">
+                                                <div class="recent-post-image">
+                                                    @if($recent->image)
+                                                        <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
+                                                             alt="Image Not Found" width="50">
+                                                    @endif
                                                 </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
+                                                <div class="recent-post-info">
+                                                    @if($recent->language == 'Both')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}">  <p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @elseif($recent->language == 'English')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->english_heading }}</p></a>
+                                                    @else
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-5 col-lg-4" style="border:1px solid #dedede;">
+                    <div class="search-block">
+                        <div class="row no-gutter">
+                            <div class="col-lg-12 col-md-12 text-center">
+                                <a href="news/category/traffic"> <h3 class="title text-white" style="background-color: #001B39;"> Economy </h3></a>
+                                <div class="col-lg-12 col-md-12 col-sm-12"
+                                     style="overflow-y: scroll; height:300px;">
+                                    @foreach($recentNews as $recent)
+                                        @if($recent->belongingCategory->slug == 'economic-news')
+                                            <div class="recent-post" style="">
+                                                <div class="recent-post-image">
+                                                    @if($recent->image)
+                                                        <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
+                                                             alt="Image Not Found" width="50">
+                                                    @endif
+                                                </div>
+                                                <div class="recent-post-info">
+                                                    @if($recent->language == 'Both')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"> <p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @elseif($recent->language == 'English')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->english_heading }}</p></a>
+                                                    @else
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-md-5 col-lg-4" style="border-left: 1px solid white;">
-                        <div class="search-block">
-                            <div class="row no-gutter">
-                                <div class="col-lg-12 col-md-12 text-center">
-                                    <h3 class="title text-white" style="background-color: blue;"> Economy </h3>
-                                    <div class="col-lg-12 col-md-12 col-sm-12"
-                                         style="overflow-y: scroll; height:300px;">
-                                        @foreach($recentNews as $recent)
-                                            @if($recent->belongingCategory->slug == 'economic-news')
-                                                <div class="recent-post" style="">
-                                                    <div class="recent-post-image">
-                                                        @if($recent->image)
-                                                            <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
-                                                                 alt="Image Not Found" width="50">
-                                                        @endif
-                                                    </div>
-                                                    <div class="recent-post-info">
-                                                        @if($recent->language == 'Both')
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @elseif($recent->language == 'English')
-                                                            <p>{{ $recent->english_heading }}</p>
-                                                        @else
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @endif
-                                                    </div>
+                </div>
+                <div class="col-sm-4 col-md-5 col-lg-4" style="border:1px solid #dedede;">
+                    <div class="search-block">
+                        <div class="row no-gutter">
+                            <div class="col-lg-12 col-md-12 text-center">
+                                <a href="news/category/transportarion"><h3 class="title text-white" style="background-color: #E10916;"> Transportation </h3></a>
+                                <div class="col-lg-12 col-md-12 col-sm-12"
+                                     style="overflow-y: scroll; height:300px;">
+                                    @foreach($recentNews as $recent)
+                                        @if($recent->belongingCategory->slug == 'transportation-news')
+                                            <div class="recent-post" style="">
+                                                <div class="recent-post-image">
+                                                    @if($recent->image)
+                                                        <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
+                                                             alt="Image Not Found" width="50">
+                                                    @endif
                                                 </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-5 col-lg-4" style="border-left: 1px solid white;">
-                        <div class="search-block">
-                            <div class="row no-gutter">
-                                <div class="col-lg-12 col-md-12 text-center">
-                                    <h3 class="title text-white"> Transportation </h3>
-                                    <div class="col-lg-12 col-md-12 col-sm-12"
-                                         style="overflow-y: scroll; height:300px;">
-                                        @foreach($recentNews as $recent)
-                                            @if($recent->belongingCategory->slug == 'transportation-news')
-                                                <div class="recent-post" style="">
-                                                    <div class="recent-post-image">
-                                                        @if($recent->image)
-                                                            <img src="{{\App\Models\Upload::findOrFail($recent->image)->path()}}"
-                                                                 alt="Image Not Found" width="50">
-                                                        @endif
-                                                    </div>
-                                                    <div class="recent-post-info">
-                                                        @if($recent->language == 'Both')
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @elseif($recent->language == 'English')
-                                                            <p>{{ $recent->english_heading }}</p>
-                                                        @else
-                                                            <p>{{ $recent->nepali_heading }}</p>
-                                                        @endif
-                                                    </div>
+                                                <div class="recent-post-info">
+                                                    @if($recent->language == 'Both')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"> <p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @elseif($recent->language == 'English')
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->english_heading }}</p></a>
+                                                    @else
+                                                        <a href="/news/{{$recent->slug}}/{{$recent->isEnglish() ? 'en' : 'np'}}"><p style="font-weight:bold; color:black; text-align: justify;">{{ $recent->nepali_heading }}</p></a>
+                                                    @endif
                                                 </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!--=================================
@@ -750,7 +810,6 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="section-title">
-                        <span>See images here</span>
                         <h2>Foto Feature </h2>
                         <div class="separator"></div>
                     </div>
@@ -843,7 +902,9 @@ custom block -->
                 <option>select varaint</option>
             </select>
         </div>
-        <button type="button" class="btn btn-danger btn-lg" style="margin-left: 50%;">COMPARE CARS</button>
+        <button type="button" class="btn btn-danger btn-lg" style="margin-left: 50%; background-color: #E10916;">COMPARE
+            CARS
+        </button>
     </div>
 
 </section>
@@ -1010,8 +1071,8 @@ clients -->
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="text-left">
-                        <p>©Copyright 2017 Car Dealer Developed by <a href="http://www.potenzaglobalsolutions.com/"
-                                                                      target="_blank">Potenzaglobalsolutions</a></p>
+                        <p>©Copyright 2018 MeroAuto Developed by <a href="http://www.proxyinfotech.com/"
+                                                                      target="_blank">Proxy Info Tech Solutions Pvt. Ltd.</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

@@ -73,4 +73,6 @@ Route::group(['namespace' => 'Frontend'], function (){
     Route::get('/news/category/{category}', 'NewsController@newsByCategory'); //Shishir Gartaula
     Route::get('/news/tag/{tagname}', 'NewsController@newsByTagname'); //Sishir Rijal
 
+
+
 });
