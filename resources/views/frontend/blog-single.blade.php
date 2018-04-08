@@ -119,8 +119,8 @@
                             <ul class="menu-logo">
                                 <li>
                                     <a href="http://demo.meroauto.com/"><img id="logo_dark_img"
-                                                              src="{{ URL::asset('template/images/Meroauto.png') }}"
-                                                              alt="logo"> </a>
+                                                                             src="{{ URL::asset('template/images/Meroauto.png') }}"
+                                                                             alt="logo"> </a>
                                 </li>
                             </ul>
                             <!-- menu links -->
@@ -309,30 +309,38 @@
                 </div>
                 <div class="blog-form">
                     <div class="gray-form row">
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputphone" placeholder="Phone">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                       placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="7" placeholder="Comment"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12">
-                            <a class="button red" href="#">SUBMIT</a>
-                        </div>
+
+                        <!--
+                        Disqus Comment form Section Start
+                        -->
+
+                        <div id="disqus_thread"></div>
+                        <script>
+
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                            var disqus_config = function () {
+                                this.page.url = '{{ url()->current() }}';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = '{{ $nepalinews->id }}'; // R1eplace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+
+                            (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://meroauto-comment.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                powered by Disqus.</a></noscript>
+
+
+                        <!--
+                        Disqus Comment form Section End
+                        -->
+
                         <div>
                         </div>
                     </div>
