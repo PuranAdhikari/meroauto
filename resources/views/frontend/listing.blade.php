@@ -90,7 +90,7 @@
                         <!-- menu logo -->
                         <ul class="menu-logo">
                             <li>
-                                <a href="index.html"><img id="logo_dark_img"
+                                <a href="http://demo.meroauto.com/"><img id="logo_dark_img"
                                                           src="{{ URL::asset('template/images/Meroauto.png') }}"
                                                           alt="logo"> </a>
                             </li>
@@ -99,7 +99,7 @@
                         <ul class="menu-links">
                             <!-- active class -->
                             <li class="active">
-                                <a href="javascript:void(0)">Home</a>
+                                <a href="http://demo.meroauto.com/">Home</a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">Cars and Bikes <i
@@ -191,7 +191,13 @@
     <div class="container">
         <div class="row text-center intro-title">
             <div class="col-lg-6 col-md-6 col-sm-6 text-left">
-                <h1 class="text-white">All News</h1>
+                <h1 class="text-white">
+                    @if(isset($category))
+                        {{$category->name}}
+                    @else
+                        All News
+                    @endif
+                </h1>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 text-right">
                 <ul class="page-breadcrumb">
@@ -216,12 +222,12 @@
             <div class="col-lg-12 col-md-12">
                 <div class="masonry columns-3">
                     <div class="grid-sizer"></div>
-                @foreach($news as $single)
+                    @foreach($news as $single)
                         <div class="masonry-item clearfix">
                             <div class="blog-2">
-                                <div class="blog-image">
+                                <div  class="blog-image">
                                     @if($single->image)
-                                        <img class="img-responsive"
+                                        <img  style="height: 300px;" class="img-responsive"
                                              src="{{ \App\Models\Upload::findOrFail($single->image)->path() }}" alt="">
                                     @endif
                                     <div class="date">
