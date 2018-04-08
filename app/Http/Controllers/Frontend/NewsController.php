@@ -7,6 +7,7 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class NewsController extends Controller
 {
 
@@ -61,9 +62,11 @@ class NewsController extends Controller
      * Listing of news of a specific author
      *
      */
-    public function newsByAuthor()
+    public function newsByAuthor($author)
     {
-        return 0;
+        $author = $author;
+        $news = News::where('created_by', $author)->get();
+        return view('frontend.newslistingbyauthor', compact('news'));
     }
 
     /**
