@@ -204,11 +204,12 @@
             <div class="col-lg-6 col-md-6 col-sm-6 text-right">
                 <ul class="page-breadcrumb">
                     <li><a href="/"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-                    <li>{{ $news->user->name }}</li>
+                    <li><a href="#">{{ $news->user->name }}</a> <i class="fa fa-angle-double-right"></i></li>
                 </ul>
             </div>
         </div>
-    </div>   
+    </div>
+@endforeach   
 </section>
 
 <!--=================================
@@ -222,21 +223,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-               <div class="masonry columns-3">
+                <div class="masonry columns-3">
                     <div class="grid-sizer"></div>
                     <div class="masonry-item clearfix">
                         <div class="blog-2">
                             <div class="blog-image">
                                 <img class="img-responsive" src="images/blog/06.jpg" alt="">
-                                <div class="date">
-                                    <span>{{ $news->created_at}}</span>
-                                </div>
+                                
                             </div>
                             <div class="blog-content">
                                 <div class="blog-admin-main">
                                     <div class="blog-admin">
                                         <img class="img-responsive" src="images/team/01.jpg" alt="">
-                                        <span>{{ $news->user->name }}</span>
+                                        <span>John Doe</span>
                                     </div>
                                     <div class="blog-meta pull-right">
                                         <ul>
@@ -255,20 +254,28 @@
                                     </div>
                                 </div>
                                 <div class="blog-description text-center">
-                                    <a href="#">{{ $news->english_heading }}</a>
+                                    <a href="#">Motivation In Life</a>
                                     <div class="separator"></div>
-                                    {{ $news->english_content }}
+                                    <p>Slow-carb listicle PBR, Schlitz mustache keytar beard art party Schlitz mustache keytar beard. </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================ -->     
+                </div>
+                h
+                <div class="pagination-nav text-center">
+                    <ul class="pagination">
+                        <li><a href="#">«</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div> 
-@endforeach   
+    </div>
 </section>
-
 
 <!--=================================
 blog -->
