@@ -32,8 +32,8 @@ class NewsController extends Controller
      */
     public function newsSingleInEnglish($slug){
       $englishnews = News::findOrFail($slug);
-      
-                
+
+
      return view('frontend.blog-right-sidebar', compact('englishnews'));
 
 
@@ -43,11 +43,11 @@ class NewsController extends Controller
      * Single news in Nepali
      *
      */
-    public function newsSingleInNepali(){
-        $nepalinews = News::findOrFail($slug);
-      
+    public function newsSingleInNepali($slug){
+        $nepalinews = News::all()->where('slug',$slug);
                 
-     return view('frontend.blog-right-sidebar', compact('nepalinews'));    }
+     return view('frontend.blog-right-sidebar', compact('nepalinews'));
+    }
 
     /**
      * Listing of news of a specific author
