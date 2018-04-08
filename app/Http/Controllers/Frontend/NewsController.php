@@ -7,6 +7,7 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class NewsController extends Controller
 {
 
@@ -36,27 +37,36 @@ class NewsController extends Controller
     public function newsSingleInEnglish($slug)
     {
         $englishnews = News::findOrFail($slug);
+
+
         return view('frontend.blog-single', compact('englishnews'));
+
+
     }
 
     /**
      * Single news in Nepali
      *
      */
-
     public function newsSingleInNepali($slug)
     {
+
         $nepalinews = News::where('slug', $slug)->first();
+
+
         return view('frontend.blog-single', compact('nepalinews'));
+
     }
 
     /**
      * Listing of news of a specific author
      *
      */
-    public function newsByAuthor()
+    public function newsByAuthor($author)
     {
-        return 0;
+        $author = $author;
+        $news = News::where('created_by', $author)->get();
+        return view('frontend.newslistingbyauthor', compact('news'));
     }
 
     /**
@@ -69,7 +79,9 @@ class NewsController extends Controller
         if ($category) {
             $news = $category->news()->latest()->get();
             return view('frontend.listing', compact(['news', 'category']));
-        } else abort(404);
+        }
+        else
+            abort(404);
     }
 
     /**
@@ -89,3 +101,5 @@ class NewsController extends Controller
         return view('frontend.index-101', compact('featuredNews', 'mainNews', 'recentNews', 'newss'));
     }
 }
+
+

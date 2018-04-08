@@ -238,7 +238,7 @@
                                     <div class="blog-admin-main">
                                         <div class="blog-admin">
                                             <img class="img-responsive" src="images/team/01.jpg" alt="">
-                                            <span>John Doe</span>
+                                            <span><a href="/news/author/{{$single->user->id}}">{{$single->user->name}}</a></span>
                                         </div>
                                         <div class="blog-meta pull-right">
                                             <ul>

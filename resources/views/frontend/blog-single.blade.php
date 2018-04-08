@@ -256,6 +256,9 @@
                     </div>
                     <div class="entry-meta">
                         <ul>
+                        <li><a href="/news/author/{{$nepalinews->user->id}}"><i class=""></i>
+                        {{$nepalinews->user->name}}
+                        </a> /</li>
                             <li><a href="#"><i class="fa fa-comments-o"></i> 5 Comments</a> /</li>
                             <li><a href="#"><i class="fa fa-folder-open"></i> {!! $nepalinews->created_at !!}</a> /</li>
                             <li><a href="#"><i class="fa fa-heart-o"></i>10</a></li>
