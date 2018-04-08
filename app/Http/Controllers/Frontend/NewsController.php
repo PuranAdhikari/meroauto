@@ -63,8 +63,7 @@ class NewsController extends Controller
      */
     public function newsByAuthor()
     {
-       $news = News::all()
-        return view('frontend.newslistingbyauthor', compact('news'));
+        return 0;
     }
 
     /**
@@ -99,3 +98,5 @@ class NewsController extends Controller
         return view('frontend.index-101', compact('featuredNews', 'mainNews', 'recentNews', 'newss'));
     }
 }
+
+

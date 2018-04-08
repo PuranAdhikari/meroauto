@@ -69,13 +69,13 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
     General
 *************************/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800,800italic,300italic|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i);
-body { font-family: 'Open Sans', sans-serif; font-weight: normal; font-style: normal; font-size: 14px; line-height: 24px; color: #999999; }
+body { font-family:'Ek Mukta', serif; font-weight: normal; font-style: normal; font-size: 14px; line-height: 24px; color: #999999; }
 a, .btn { -webkit-transition: all 0.5s ease-out 0s; -moz-transition: all 0.5s ease-out 0s; -ms-transition: all 0.5s ease-out 0s; -o-transition: all 0.5s ease-out 0s; transition: all 0.5s ease-out 0s; }
 a:focus { text-decoration: none !important; }
 a:focus, a:hover { color: #db2d2e; text-decoration: none !important; }
 a, button, input { outline: medium none !important; color: #db2d2e; }
 .uppercase { text-transform: uppercase; }
-h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: normal; color: #363636; margin-top: 0px; text-transform: uppercase; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Ek Mukta', serif; font-weight: normal; color: #363636; margin-top: 0px; text-transform: uppercase; }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; }
 h1 { font-size: 40px; font-style: normal; font-weight: 500; line-height: 40px; }
 h2 { font-size: 35px; font-style: normal; font-weight: 600; line-height: 35px; }
@@ -1303,6 +1303,8 @@ ul.page-breadcrumb li a:hover { color: #db2d2e; }
 
 /*entry-content*/
 .blog .entry-content p { margin-bottom: 20px; }
+.entry-content p img { width: 640px; !important; }
+
 .blog .entry-share .share a { padding: 8px 15px; display: inline-block; background: #db2d2e; color: #ffffff; }
 .blog .entry-share .share .news-social { right: 10px; }
 .blog .entry-share .share .news-social li a { margin: 2px 0px; }
@@ -1618,7 +1620,7 @@ ul.page-breadcrumb li a:hover { color: #db2d2e; }
                Home - 10       
 **************************************/
 .bg-overlay-black:before { background: rgba(0, 0, 0, 0.6); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
-#video-background { width:100%; height:100vh z-index: 0; padding: 23% 0; }
+#video-background { width:100%; height:100vh; z-index: 0; padding: 23% 0; }
 .custom-block-3 .custom-block-content { padding-top: 80px; }
 /*search-block*/
 .search-here .search-block { margin-top: -52px; }
