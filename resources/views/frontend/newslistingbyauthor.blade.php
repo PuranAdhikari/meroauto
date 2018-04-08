@@ -194,24 +194,23 @@
 <!--=================================
  inner-intro -->
 
-<section class="inner-intro bg-1 bg-overlay-black-70">
-@foreach($news as $news)
-<div class="container">
+<<section class="inner-intro bg-1 bg-overlay-black-70">
+@foreach($news as $single)
+    <div class="container">
         <div class="row text-center intro-title">
             <div class="col-lg-6 col-md-6 col-sm-6 text-left">
-                <h6 class="text-white">By {{ $news->user->name }} </h6>
+                <h1 class="text-white">{{ $single->user->name }}</h1>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 text-right">
                 <ul class="page-breadcrumb">
                     <li><a href="/"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-                    <li><a href="#">{{ $news->user->name }}</a> <i class="fa fa-angle-double-right"></i></li>
+                    <li>{{$single->user->name}}</li>
                 </ul>
-            </div>
+            </div>  
         </div>
     </div>
-@endforeach   
+ @endforeach      
 </section>
-
 <!--=================================
  inner-intro -->
 
@@ -225,44 +224,69 @@
             <div class="col-lg-12 col-md-12">
                 <div class="masonry columns-3">
                     <div class="grid-sizer"></div>
-                    <div class="masonry-item clearfix">
-                        <div class="blog-2">
-                            <div class="blog-image">
-                                <img class="img-responsive" src="images/blog/06.jpg" alt="">
-                                
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-admin-main">
-                                    <div class="blog-admin">
-                                        <img class="img-responsive" src="images/team/01.jpg" alt="">
-                                        <span>John Doe</span>
-                                    </div>
-                                    <div class="blog-meta pull-right">
-                                        <ul>
-                                            <li><a href="#"> <i class="fa fa-comment"></i><br /> 123</a></li>
-                                            <li class="share"><a href="#"> <i class="fa fa-share-alt"></i><br /> ...</a>
-                                                <div class="blog-social">
-                                                    <ul class="list-style-none">
-                                                        <li> <a href="#"><i class="fa fa-facebook"></i></a> </li>
-                                                        <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
-                                                        <li> <a href="#"><i class="fa fa-instagram"></i></a> </li>
-                                                        <li> <a href="#"><i class="fa fa-pinterest-p"></i></a> </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
+                @foreach($news as $single)
+                        <div class="masonry-item clearfix">
+                            <div class="blog-2">
+                                <div class="blog-image">
+                                    @if($single->image)
+                                        <img class="img-responsive"
+                                             src="{{ \App\Models\Upload::findOrFail($single->image)->path() }}" alt="">
+                                    @endif
+                                    <div class="date">
+                                        <span>{{ date('M d', strtotime($single->updated_at)) }}</span>
                                     </div>
                                 </div>
-                                <div class="blog-description text-center">
-                                    <a href="#">Motivation In Life</a>
-                                    <div class="separator"></div>
-                                    <p>Slow-carb listicle PBR, Schlitz mustache keytar beard art party Schlitz mustache keytar beard. </p>
+                                <div class="blog-content">
+                                    <div class="blog-admin-main">
+                                        <div class="blog-admin">
+                                            <img class="img-responsive" src="images/team/01.jpg" alt="">
+                                            <span>{{$single->user->name}}</span>
+                                        </div>
+                                        <div class="blog-meta pull-right">
+                                            <ul>
+                                                <li><a href="#"> <i class="fa fa-comment"></i><br/> 123</a></li>
+                                                <li class="share"><a href="#"> <i class="fa fa-share-alt"></i><br/> ...</a>
+                                                    <div class="blog-social">
+                                                        <ul class="list-style-none">
+                                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="blog-description text-center">
+                                        @if( trim($single->language) == "Both")
+                                            <a href="/news/{!! $single->slug !!}/np">{!! $single->nepali_heading  !!}</a>
+                                        @elseif( trim($single->language) == "Nepali")
+                                            <a href="/news/{!! $single->slug !!}/np">{!! $single->nepali_heading  !!}</a>
+                                        @elseif( trim($single->language) == "English")
+                                            <a href="/news/{!! $single->slug !!}/en">{!! $single->english_heading  !!}</a>
+                                        @else
+                                            <a>Language type Undefined</a>
+                                        @endif
+                                        <div class="separator"></div>
+                                        <p>
+                                            @if( trim($single->language) == "Both")
+                                                {!! str_limit(strip_tags($single->nepali_content), 100)  !!}
+                                            @elseif( trim($single->language) == "Nepali")
+                                                {!! str_limit(strip_tags($single->nepali_content), 100)  !!}
+                                            @elseif( trim($single->language) == "English")
+                                                {!! str_limit(strip_tags($single->english_content), 100) !!}
+                                            @else
+                                                <a>Language type Undefined</a>
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <!-- Blog single Item -->
+                    @endforeach
                 </div>
-                h
                 <div class="pagination-nav text-center">
                     <ul class="pagination">
                         <li><a href="#">«</a></li>
