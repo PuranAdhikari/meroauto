@@ -22,7 +22,7 @@ class NewsController extends Controller
      * Listing of Top News
      *
      */
-    public function newsListingTop(){
+    public function newsListingTop(){.
         return view('frontend.topnewslisting');
     }
 
