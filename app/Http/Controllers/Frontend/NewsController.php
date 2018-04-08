@@ -24,13 +24,9 @@ class NewsController extends Controller
      * Listing of Top News
      *
      */
-<<<<<<< HEAD
-    public function newsListingTop(){.
-=======
     public function newsListingTop()
     {
->>>>>>> 398007d49d5a0fa660a2ddde77f867b278d3679a
-        return view('frontend.topnewslisting');
+         return view('frontend.topnewslisting');
     }
 
     /**
