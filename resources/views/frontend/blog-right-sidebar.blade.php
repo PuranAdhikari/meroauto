@@ -351,11 +351,12 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8">
                 <!-- Blog Content All -->
                 <!-- ============================================ -->
-                @foreach($news as $news_single)
+                @foreach($nepalinews as $news_single)
                     <div class="blog-entry">
                         <div class="blog-entry-image  clearfix">
                             <div class="portfolio-item">
