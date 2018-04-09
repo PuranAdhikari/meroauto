@@ -1,3 +1,4 @@
+@include('admin.layouts.partials.messages.success')
 @if(count($errors))
     <div class="alert alert-danger"><strong>Whoops!</strong> Please review the errors and try again.</div>
 @endif
@@ -69,14 +70,26 @@
                 <select name="category" class="form-control">
                     <option value="">--Select One--</option>
                     @foreach(\App\Models\Category::whereNull('parent')->get() as $cat)
-                        <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($news) && ($cat->id == $news->category))) ? 'selected' : ''}}>{{$cat->name}}@if(!$cat->published)
-                                [**Unpublished Category] @endif</option>
+                        <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($news) && ($cat->id == $news->category))) ? 'selected' : ''}}>
+                            {{$cat->name}}
+                            @if(!$cat->published)
+                                [**Unpublished Category]
+                            @endif
+                        </option>
                         @if(count($cat->children_categories))
                             @include('admin.news.__category_dropdown', ['cat'=>$cat->children_categories, 'level'=>1])
                         @endif
                     @endforeach
                 </select>
                 {!!$errors->first('category', '<span class="text-danger has-error">:message</span>')!!}
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <label for="tags" class="col-md-2 control-label">Tags</label>
+            <div class="col-md-10">
+                {!! Form::text('tags', null, ['class'=>'tagsinput form-control', 'data-role'=>'tagsinput']) !!}
+                {!!$errors->first('tags', '<span class="text-danger has-error">:message</span>')!!}
             </div>
         </div>
         <div class="hr-line-dashed"></div>
@@ -118,7 +131,7 @@
         <div class="form-group">
             <label for="featured" class="col-md-2 control-label">Featured</label>
             <div class="col-md-2">
-                {!! Form::checkbox('featured', null, null, ['class'=>'js-switch']) !!}
+                {!! Form::checkbox('featured', null, null, ['class'=>'js-switch', 'id'=>'featured']) !!}
             </div>
             <label for="main_news" class="col-md-2 control-label">Main News</label>
             <div class="col-md-2">
@@ -175,10 +188,11 @@
 
 <div class="hr-line-dashed"></div>
 <div class="form-group">
-    <div class="col-sm-4 col-sm-offset-2">
+    <div class="col-sm-6 col-sm-offset-2">
+        <button class="btn btn-primary" type="submit" name="save" value="save">Save</button>
+        <button class="btn btn-info" type="submit" name="save_close" value="save">Save & Close</button>
         <a class="btn btn-white" href="/admin/news"
            onclick="return confirm('Are you sure? The unsaved changes will be discarded.')">Cancel</a>
-        <button class="btn btn-primary" type="submit">Save</button>
     </div>
 </div>
 
@@ -218,6 +232,16 @@
                 $('.english').show();
             }
         }
+        $('.tagsinput').tagsinput({
+            tagClass: 'label label-primary'
+        });
+
+        var featured = document.querySelector('#featured');
+        featured.onchange = function () {
+            if (featured.checked) {
+                return confirm("Another featured news will be replaced by this !");
+            }
+        };
 
     });
 </script>

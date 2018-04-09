@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\News;
+
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -36,18 +38,36 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::post('/news/delete', 'NewsController@bulkDelete');
     Route::get('/news/slug/{title}', 'NewsController@slug');
 
+    #Manufacturers
+    Route::resource('/manufacturers', 'ManufacturerController');
+    Route::get('/manufacturers/toggle-status/{id}', 'ManufacturerController@toggleStatus');
+    Route::post('/manufacturers/delete', 'ManufacturerController@bulkDelete');
+    Route::get('/manufacturers/slug/{name}', 'ManufacturerController@slug');
+
+    #Car Models
+    Route::resource('/car-models', 'CarModelController');
+    Route::get('/car-models/toggle-status/{id}', 'CarModelController@toggleStatus');
+    Route::post('/car-models/delete', 'CarModelController@bulkDelete');
+    Route::get('/car-models/slug/{name}', 'CarModelController@slug');
+
+    #Car Variants
+    Route::resource('/car-variants', 'CarVariantController');
+    Route::get('/car-variants/toggle-status/{id}', 'CarVariantController@toggleStatus');
+    Route::post('/car-variants/delete', 'CarVariantController@bulkDelete');
+    Route::get('/car-variants/slug/{name}', 'CarVariantController@slug');
+
     #Menus
     Route::resource('/menus', 'MenusController');
     Route::get('/menus/toggle-status/{id}', 'MenusController@toggleStatus');
     Route::post('/menus/delete', 'MenusController@bulkDelete');
     Route::get('/menus/slug/{title}', 'MenusController@slug');
-    
+
     #Menu Items
     Route::resource('/menu-items', 'MenuItemsController');
     Route::get('/menu-items/toggle-status/{id}', 'MenuItemsController@toggleStatus');
     Route::post('/menu-items/delete', 'MenuItemsController@bulkDelete');
     Route::get('/menu-items/slug/{title}', 'MenuItemsController@slug');
-    
+
     #Uploads
     Route::resource('/uploads', 'UploadsController');
     Route::post('/upload_files', 'UploadsController@upload_files');
@@ -56,5 +76,4 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::post('/uploads_update_filename', 'UploadsController@update_filename');
     Route::post('/uploads_update_public', 'UploadsController@update_public');
     Route::post('/uploads_delete_file', 'UploadsController@delete_file');
-
 });

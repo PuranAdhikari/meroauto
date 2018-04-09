@@ -21,7 +21,7 @@ class MenuItemsController extends Controller
 
     public function index()
     {
-        $menu_items = MenuItem::whereNull('parent')->get();
+        $menu_items = MenuItem::whereNull('parent')->latest()->get();
         return view('admin.menu_items.index', compact('menu_items'));
     }
 

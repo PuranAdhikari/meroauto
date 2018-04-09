@@ -6,7 +6,7 @@
         <td class="project-status">
             <a data-toggle="tooltip" data-placement="top"
                title="{{$child->published ? 'Unpublish Item' : 'Publish Item'}}"
-               href="/admin/categories/update-status/{{$child->id}}"
+               href="/admin/categories/toggle-status/{{$child->id}}"
                class="label label-{!! $child->published ? 'primary' : 'danger' !!}">
                 {!! $child->published ? 'Active' : 'Inactive' !!}
             </a>

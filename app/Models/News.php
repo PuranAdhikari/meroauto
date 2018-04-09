@@ -57,4 +57,9 @@ class News extends Model
     {
         return $this->language == 'Both' ? true : false;
     }
+
+    public static function removeFeatured()
+    {
+        return self::where('featured', 1)->update(['featured' => 0]);
+    }
 }

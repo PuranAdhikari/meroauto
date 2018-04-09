@@ -22,7 +22,7 @@
 								
 								@if(!config('laraadmin.uploads.private_uploads'))
 									<label class="fm_folder_title">Is Public ?</label>
-									{{ Form::checkbox("public", "public", config("laraadmin.uploads.default_public"), []) }}
+									{{ Form::checkbox("public", "public", true, []) }}
 									<div class="Switch Ajax Round On"><div class="Toggle"></div></div>
 								@endif
 							</form>

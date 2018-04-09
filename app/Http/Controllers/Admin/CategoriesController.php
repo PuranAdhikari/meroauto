@@ -20,7 +20,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::whereNull('parent')->get();
+        $categories = Category::whereNull('parent')->latest()->get();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -33,8 +33,9 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
-        Category::create($data);
-        return redirect('/admin/categories')->with('message', 'Category created successfully.');
+        $category = Category::create($data);
+        $url = $request->save_close ? 'categories' : 'categories/' . $category->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'Category created successfully.');
     }
 
     public function edit($id)
@@ -49,8 +50,8 @@ class CategoriesController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $category->update($data);
-        return redirect('/admin/categories')->with('message', 'Category updated successfully.');
-    }
+        $url = $request->save_close ? 'categories' : 'categories/' . $category->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'Category updated successfully.');    }
 
     public function toggleStatus($id)
     {

@@ -20,7 +20,7 @@ class MenusController extends Controller
 
     public function index()
     {
-        $menus = Menu::all();
+        $menus = Menu::latest()->get();
         return view('admin.menus.index', compact('menus'));
     }
 

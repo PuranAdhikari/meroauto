@@ -18,12 +18,12 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        $this->requestArray = ['language', 'english_heading', 'nepali_heading', 'english_sub_heading', 'nepali_sub_heading', 'slug', 'category', 'english_content', 'nepali_content', 'image', 'featured', 'published', 'main_news', 'start_publishing', 'finish_publishing', 'meta_title', 'meta_description', 'keywords', 'robots'];
+        $this->requestArray = ['language', 'english_heading', 'nepali_heading', 'english_sub_heading', 'nepali_sub_heading', 'slug', 'category', 'tags', 'english_content', 'nepali_content', 'image', 'featured', 'published', 'main_news', 'start_publishing', 'finish_publishing', 'meta_title', 'meta_description', 'keywords', 'robots'];
     }
 
     public function index()
     {
-        $news = News::all();
+        $news = News::latest()->get();
         return view('admin.news.index', compact('news'));
     }
 
@@ -36,10 +36,16 @@ class NewsController extends Controller
     {
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
-        $request->has('featured') && $request->featured == 'on' ? $data['featured'] = 1 : $data['featured'] = 0;
+        if ($request->has('featured') && $request->featured == 'on') {
+            News::removeFeatured();
+            $data['featured'] = 1;
+        } else {
+            $data['featured'] = 0;
+        }
         $request->has('main_news') && $request->main_news == 'on' ? $data['main_news'] = 1 : $data['main_news'] = 0;
-        News::create($data);
-        return redirect('/admin/news')->with('message', 'News created successfully.');
+        $news = News::create($data);
+        $url = $request->save_close ? 'news' : 'news/' . $news->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'News created successfully.');
     }
 
     public function edit($id)
@@ -53,10 +59,16 @@ class NewsController extends Controller
         $news = News::find($id);
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
-        $request->has('featured') && $request->featured == 'on' ? $data['featured'] = 1 : $data['featured'] = 0;
+        if ($request->has('featured') && $request->featured == 'on') {
+            News::removeFeatured();
+            $data['featured'] = 1;
+        } else {
+            $data['featured'] = 0;
+        }
         $request->has('main_news') && $request->main_news == 'on' ? $data['main_news'] = 1 : $data['main_news'] = 0;
         $news->update($data);
-        return redirect('/admin/news')->with('message', 'News updated successfully.');
+        $url = $request->save_close ? 'news' : 'news/' . $news->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'News updated successfully.');
     }
 
     public function toggleStatus($id)
@@ -80,6 +92,7 @@ class NewsController extends Controller
             $news->featured = 0;
             $feature = 'unfeatured';
         } else {
+            News::removeFeatured();
             $news->featured = 1;
             $feature = 'featured';
         }
