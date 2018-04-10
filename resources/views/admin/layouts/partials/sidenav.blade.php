@@ -4,7 +4,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/assets/admin/img/profile_small.jpg"/>
+                            <img alt="image" class="img-circle img-responsive" src="/assets/admin/img/Meroauto.png"/>
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    MA
                 </div>
             </li>
             <li class="{{@$urls[4] == '' ? 'active' : ''}}">
@@ -34,34 +34,29 @@
                 <a href="/admin/manufacturers"><i class="fa fa-building"></i> <span
                             class="nav-label">Manufacturers</span></a>
             </li>
-
             <li class="{{@$urls[4] == 'car-models' ? 'active' : ''}}">
                 <a href="/admin/car-models"><i class="fa fa-car"></i> <span class="nav-label">Car Models</span></a>
             </li>
             <li class="{{@$urls[4] == 'car-variants' ? 'active' : ''}}">
                 <a href="/admin/car-variants"><i class="fa fa-th-list"></i> <span class="nav-label">Car Variants</span></a>
             </li>
-            <li class="{{@$urls[4] == 'contact-requests' ? 'active' : ''}}">
-                <a href="/admin/contact-requests"><i class="fa fa-envelope"></i> <span class="nav-label">Contact Requests</span></a>
-            </li>
-            <li class="{{@$urls[4] == 'users' ? 'active' : ''}}">
-                <a href="/admin/users"><i class="fa fa-users"></i> <span class="nav-label">Users</span></a>
-            </li>
-
-            {{--<li class="{{(@$urls[4] == 'menus' || @$urls[4] == 'menu-items') ? 'active' : ''}}">--}}
-            {{--<a href="#"><i class="fa fa-list"></i> <span class="nav-label">Menus</span><span--}}
-            {{--class="fa arrow"></span></a>--}}
-            {{--<ul class="nav nav-second-level collapse">--}}
-            {{--<li class="{{@$urls[4] == 'menus' ? 'active' : ''}}">--}}
-            {{--<a href="/admin/menus"><i class="fa fa-list-ol"></i> <span class="nav-label">Menus</span></a>--}}
-            {{--</li>--}}
-            {{--<li class="{{@$urls[4] == 'menu-items' ? 'active' : ''}}">--}}
-            {{--<a href="/admin/menu-items"><i class="fa fa-list-ul"></i> <span class="nav-label">Menu Items</span></a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            <li class="{{@$urls[4] == 'uploads' ? 'active' : ''}}">
-                <a href="/admin/uploads"><i class="fa fa-cloud-upload"></i> <span class="nav-label">Uploads</span></a>
+            <li class="{{@$urls[4] == 'requests' ? 'active' : ''}}">
+                <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Requests </span><span
+                            class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="{{@$urls[5] == 'more-info' ? 'active' : ''}}">
+                        <a href="/admin/requests/more-info">More Information</a>
+                    </li>
+                    <li class="{{@$urls[5] == 'test-drive' ? 'active' : ''}}">
+                        <a href="/admin/requests/test-drive">Test Drive</a>
+                    </li>
+                    <li class="{{@$urls[5] == 'offers-made' ? 'active' : ''}}">
+                        <a href="/admin/requests/offers-made">Offers Made</a>
+                    </li>
+                    <li class="{{@$urls[5] == 'contacts' ? 'active' : ''}}">
+                        <a href="/admin/requests/contacts">Contact Requests</a>
+                    </li>
+                </ul>
             </li>
             <li class="{{@$urls[4] == 'ads-manager' ? 'active' : ''}}">
                 <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Ads Manager </span><span
@@ -74,6 +69,12 @@
                         <a href="/admin/ads-manager/items">Ad Items</a>
                     </li>
                 </ul>
+            </li>
+            <li class="{{@$urls[4] == 'uploads' ? 'active' : ''}}">
+                <a href="/admin/uploads"><i class="fa fa-cloud-upload"></i> <span class="nav-label">Uploads</span></a>
+            </li>
+            <li class="{{@$urls[4] == 'users' ? 'active' : ''}}">
+                <a href="/admin/users"><i class="fa fa-users"></i> <span class="nav-label">Users</span></a>
             </li>
             @stack('sidenav')
 

@@ -18,7 +18,7 @@ class NewsController extends Controller
 
     public function __construct()
     {
-        $this->requestArray = ['language', 'english_heading', 'nepali_heading', 'english_sub_heading', 'nepali_sub_heading', 'slug', 'category', 'tags', 'english_content', 'nepali_content', 'image', 'featured', 'published', 'main_news', 'start_publishing', 'finish_publishing', 'meta_title', 'meta_description', 'keywords', 'robots'];
+        $this->requestArray = ['language', 'english_heading', 'nepali_heading', 'english_sub_heading', 'nepali_sub_heading', 'slug', 'category', 'tags', 'author', 'english_content', 'nepali_content', 'image', 'featured', 'published', 'main_news', 'start_publishing', 'finish_publishing', 'meta_title', 'meta_description', 'keywords', 'robots'];
     }
 
     public function index()

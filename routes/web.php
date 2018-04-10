@@ -77,9 +77,15 @@ $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     $this->post('/menu-items/delete', 'MenuItemsController@bulkDelete');
     $this->get('/menu-items/slug/{title}', 'MenuItemsController@slug');
 
-    #Contact Requests
-    $this->resource('/contact-requests', 'ContactRequestController');
-    $this->post('/contact-requests/delete', 'ContactRequestController@bulkDelete');
+    #Requests
+    $this->get('/requests/contacts', 'RequestController@getContacts');
+    $this->post('/requests/contacts/delete', 'RequestController@deleteContacts');
+    $this->get('/requests/more-info', 'RequestController@getMoreInfo');
+    $this->post('/requests/more-info/delete', 'RequestController@deleteMoreInfo');
+    $this->get('/requests/test-drive', 'RequestController@getTestDrive');
+    $this->post('/requests/test-drive/delete', 'RequestController@deleteTestDrive');
+    $this->get('/requests/offers-made', 'RequestController@getOffersMade');
+    $this->post('/requests/offers-made/delete', 'RequestController@deleteOffersMade');
 
     #Users Management
     $this->get('/users/search', 'UsersController@search');

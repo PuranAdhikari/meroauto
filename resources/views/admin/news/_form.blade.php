@@ -113,8 +113,13 @@
         </div>
         <div class="hr-line-dashed"></div>
         <div class="form-group">
+            <label for="author" class="col-md-2 control-label">Author</label>
+            <div class="col-md-4">
+                {!! Form::text('author', null, ['class'=>'form-control']) !!}
+                {!!$errors->first('author', '<span class="text-danger has-error">:message</span>')!!}
+            </div>
             <label for="image" class="col-md-2 control-label">Image</label>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 {!! Form::hidden('image', null, ['class'=>'form-control', 'placeholder'=>'Choose Image', 'data-rule-maxlength'=>250]) !!}
                 <a class="btn btn-default btn_upload_image {{isset($news) && $news->image ? 'hide' : ''}}"
                    file_type="image"

@@ -77,7 +77,7 @@ class UploadsController extends Controller
      */
     public function uploaded_files()
     {
-        $uploads = Upload::all();
+        $uploads = Upload::latest()->get();
 
         $uploads2 = array();
         foreach ($uploads as $upload) {
