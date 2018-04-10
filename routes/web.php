@@ -27,7 +27,6 @@ $this->get('/logout', 'Auth\LoginController@logout');
 
 $this->get('files/{hash}/{name}', 'Admin\UploadsController@get_file');
 
-
 $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     $this->get('/', 'BaseController@index');
 
@@ -104,4 +103,25 @@ $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     $this->post('/uploads_update_filename', 'UploadsController@update_filename');
     $this->post('/uploads_update_public', 'UploadsController@update_public');
     $this->post('/uploads_delete_file', 'UploadsController@delete_file');
+
+});
+
+#Frontend Routes
+
+$this->group(['namespace' => 'Frontend'], function (){
+
+    #Homepage Route
+    $this->get('/', 'NewsController@index');
+
+    #News Routes
+    $this->get('/news', 'NewsController@newsListing'); // Sishir Rijal
+    $this->get('/news/top', 'NewsController@newsListingTop'); //Sishir Rijal
+    $this->get('/{slug}/en', 'NewsController@newsSingleInEnglish'); //Suman Niraula
+    $this->get('/{slug}/np', 'NewsController@newsSingleInNepali'); //Suman Niraula
+    $this->get('/news/author/{author}', 'NewsController@newsByAuthor'); //Shishir Gartaula
+    $this->get('/news/{slug}/en', 'NewsController@newsSingleInEnglish'); //Suman Niraula
+    $this->get('/news/{slug}/np', 'NewsController@newsSingleInNepali'); //Suman Niraula
+    $this->get('/news/{author}', 'NewsController@newsByAuthor'); //Shishir Gartaula
+    $this->get('/news/category/{category}', 'NewsController@newsByCategory'); //Shishir Gartaula
+    $this->get('/news/tag/{tagname}', 'NewsController@newsByTagname'); //Sishir Rijal
 });

@@ -3,6 +3,6 @@
         Version <strong>1.0</strong>
     </div>
     <div>
-        <strong>Copyright</strong> Tolung Creations &copy; {{date('Y')}}
+        <strong>Copyright</strong> Proxy Infotech Solutions Pvt. Ltd. &copy; {{date('Y')}}
     </div>
 </div>

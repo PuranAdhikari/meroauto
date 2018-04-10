@@ -25,8 +25,10 @@ class CreateNewsTable extends Migration
             $table->foreign('category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('image')->unsigned()->nullable();
+
             $table->text('english_content')->nullable();
             $table->text('nepali_content')->nullable();
+
             $table->tinyInteger('featured')->default(0);
             $table->tinyInteger('published')->default(0);
             $table->tinyInteger('main_news')->default(0);
@@ -41,7 +43,9 @@ class CreateNewsTable extends Migration
 
             $table->integer('hits')->default(0);
 
-            $table->integer('created_by');
+            $table->integer('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->integer('updated_by')->nullable();
             $table->integer('deleted_by')->nullable();
             $table->softDeletes();

@@ -1,5 +1,6 @@
 <?php
 use App\Models\AdCategory;
+use App\Models\Category;
 use App\Models\Manufacturer;
 
 function selectManufacturers()

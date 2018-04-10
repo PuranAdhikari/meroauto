@@ -22,6 +22,8 @@
 <!-- SUMMERNOTE -->
 <script src="/assets/admin/js/plugins/summernote/summernote.min.js"></script>
 
+<<<<<<< HEAD
+=======
 <!-- ICHECK -->
 <script src="/assets/admin/js/plugins/iCheck/icheck.min.js"></script>
 
@@ -30,12 +32,6 @@
 <!-- Color picker -->
 <script src="/assets/admin/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 
-
 <script src="/assets/admin/js/app.min.js"></script>
 
-<script>
-    $(function () {
-        $('img').addClass('.img-responsive');
-    })
-</script>
 @stack('scripts')

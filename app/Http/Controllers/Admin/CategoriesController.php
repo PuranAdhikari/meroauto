@@ -51,7 +51,8 @@ class CategoriesController extends Controller
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $category->update($data);
         $url = $request->save_close ? 'categories' : 'categories/' . $category->id . '/edit';
-        return redirect('/admin/' . $url)->with('message', 'Category updated successfully.');    }
+        return redirect('/admin/' . $url)->with('message', 'Category updated successfully.');
+    }
 
     public function toggleStatus($id)
     {

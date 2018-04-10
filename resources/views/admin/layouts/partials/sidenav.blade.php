@@ -30,7 +30,6 @@
             <li class="{{@$urls[4] == 'news' ? 'active' : ''}}">
                 <a href="/admin/news"><i class="fa fa-newspaper-o"></i> <span class="nav-label">News</span></a>
             </li>
-
             <li class="{{@$urls[4] == 'manufacturers' ? 'active' : ''}}">
                 <a href="/admin/manufacturers"><i class="fa fa-building"></i> <span
                             class="nav-label">Manufacturers</span></a>

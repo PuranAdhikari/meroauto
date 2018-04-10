@@ -112,7 +112,9 @@ class NewsController extends Controller
     {
         $slug = Str::slug($title);
         $slugCount = News::where('slug', $slug)->get()->count();
-        return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+        return ($slugCount > 0) ? "{
+        $slug}-{
+        $slugCount}" : $slug;
     }
 
     public function search(Request $request)
