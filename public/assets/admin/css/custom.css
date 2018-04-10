@@ -1,6 +1,5 @@
 /* ================= Toggle Switch - Checkbox ================= */
 .Switch {
-<<<<<<< HEAD
   position: relative;
   display: inline-block;
   font-size: 1.6em;
@@ -149,12 +148,10 @@ body.IE7 .Switch.Round {
 
 .Switch.Round.On .Toggle {
     left: 63%;
->>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 }
 
 /* =================== Uploads =================== */
 #fm_dropzone_main {
-<<<<<<< HEAD
   border: 1px dashed #0087F7;
   border-radius: 5px;
   background: white;
@@ -948,5 +945,4 @@ sub, sup {
 
 .btn-in-td {
     margin-top: 0px !important;
->>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 }

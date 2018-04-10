@@ -22,8 +22,6 @@
 <!-- SUMMERNOTE -->
 <script src="/assets/admin/js/plugins/summernote/summernote.min.js"></script>
 
-<<<<<<< HEAD
-=======
 <!-- ICHECK -->
 <script src="/assets/admin/js/plugins/iCheck/icheck.min.js"></script>
 
