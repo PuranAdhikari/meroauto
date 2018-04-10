@@ -42,7 +42,8 @@
                 @endif
             </div>
             <div class="form-group">
-                <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
+                <input id="password" type="password" class="form-control" name="password" required
+                       placeholder="Password">
 
                 @if ($errors->has('password'))
                     <span class="help-block">
@@ -57,7 +58,7 @@
             </a>
         </form>
         <p class="m-t">
-            <small>&copy; Tolung Creations {!! date('Y') !!}</small>
+            <small>&copy; Proxy Infotech Solutions Pvt. Ltd. {{date('Y')}}</small>
         </p>
     </div>
 </div>

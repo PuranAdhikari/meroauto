@@ -114,6 +114,10 @@
 
 
             <li>
+                <a href="/" target="_blank">
+                    <i class="fa fa-eye"></i> View Site
+                </a>
+            </li><li>
                 <a href="/logout">
                     <i class="fa fa-sign-out"></i> Logout
                 </a>

@@ -3,6 +3,6 @@
         Version <strong>1.0</strong>
     </div>
     <div>
-        <strong>Copyright</strong> Proxy Infotech Solutions Pvt. Ltd. &copy; {{date('Y')}}
+        &copy; Proxy Infotech Solutions Pvt. Ltd. {{date('Y')}}
     </div>
 </div>
