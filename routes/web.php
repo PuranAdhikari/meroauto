@@ -92,11 +92,15 @@ $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     $this->resource('/users', 'UsersController');
     $this->post('/users/delete', 'UsersController@bulkDelete');
 
+    #Featured Photos
+    $this->resource('/featured-photos', 'FeaturedPhotoController');
+    $this->get('/featured-photos/toggle-status/{id}', 'FeaturedPhotoController@toggleStatus');
+    $this->post('/featured-photos/delete', 'FeaturedPhotoController@bulkDelete');
+
     #Ads Manager
     $this->resource('/ads-manager/categories', 'AdCategoryController');
     $this->get('/ads-manager/categories/toggle-status/{id}', 'AdCategoryController@toggleStatus');
     $this->post('/ads-manager/categories/delete', 'AdCategoryController@bulkDelete');
-
     $this->resource('/ads-manager/items', 'AdItemController');
     $this->get('/ads-manager/items/toggle-status/{id}', 'AdItemController@toggleStatus');
     $this->post('/ads-manager/items/delete', 'AdItemController@bulkDelete');

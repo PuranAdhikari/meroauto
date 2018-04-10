@@ -4,7 +4,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle img-responsive" src="/assets/admin/img/Meroauto.png"/>
+                            <img alt="image" class="img-circle img-responsive" src="/assets/admin/img/meroauto-light.png"/>
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
@@ -69,6 +69,9 @@
                         <a href="/admin/ads-manager/items">Ad Items</a>
                     </li>
                 </ul>
+            </li>
+            <li class="{{@$urls[4] == 'featured-photos' ? 'active' : ''}}">
+                <a href="/admin/featured-photos"><i class="fa fa-image"></i> <span class="nav-label">Featured Photos</span></a>
             </li>
             <li class="{{@$urls[4] == 'uploads' ? 'active' : ''}}">
                 <a href="/admin/uploads"><i class="fa fa-cloud-upload"></i> <span class="nav-label">Uploads</span></a>
