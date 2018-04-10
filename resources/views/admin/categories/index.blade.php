@@ -100,7 +100,7 @@
         $('#delete-selected').click(function (e) {
             e.preventDefault();
             var ck_box = $('input[type="checkbox"]:checked').length;
-            if (ck_box > 0) {
+            if (ck_box > 1) {
                 if (confirm('WARNING: You are about to trash the selected categories, their children categories and all their included items!'))
                     $('#delete-form').submit();
             }

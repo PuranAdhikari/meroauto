@@ -1,4 +1,5 @@
 <?php
+use App\Models\AdCategory;
 use App\Models\Manufacturer;
 
 function selectManufacturers()
@@ -53,4 +54,32 @@ function modelBodyType()
 {
     $arr = ['Hatchback', 'Van', 'Crossover', 'Wagon', 'SUV', 'Coupe', 'Convertible'];
     return array_combine($arr, $arr);
+}
+
+function selectStatuses()
+{
+    $arr = ['Unpublished', 'Published'];
+    return $arr;
+}
+
+function selectFeatureStatuses()
+{
+    $arr = ['Not Featured', 'Featured'];
+    return $arr;
+}
+
+function language()
+{
+    $arr = ['English' => 'English Only', 'Nepali' => 'Nepali Only', 'Both' => 'English & Nepali'];
+    return $arr;
+}
+
+function itemsPerPage()
+{
+    return array_combine(range(10, 100, 10), range(10, 100, 10));
+}
+
+function selectAdCategories()
+{
+    return AdCategory::published()->pluck('name', 'id');
 }

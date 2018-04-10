@@ -20,7 +20,7 @@ class ManufacturerController extends Controller
 
     public function index()
     {
-        $manufacturers = Manufacturer::latest()->get();
+        $manufacturers = Manufacturer::latest()->paginate(30);
         return view('admin.manufacturers.index', compact('manufacturers'));
     }
 
@@ -80,5 +80,20 @@ class ManufacturerController extends Controller
         $slug = Str::slug($name);
         $slugCount = Manufacturer::where('slug', $slug)->get()->count();
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+
+    public function search(Request $request)
+    {
+        $manufacturers = Manufacturer::query();
+        if ($request->name) {
+            $manufacturers->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if ($request->status != null) {
+            $manufacturers->where('published', $request->status);
+        }
+        $paginateItems = $request->items_per_page;
+        $manufacturers = $manufacturers->latest()->paginate($paginateItems);
+        $searching = true;
+        return view('admin.manufacturers.index', compact('manufacturers', 'searching'));
     }
 }

@@ -13,7 +13,7 @@
         <div class="form-group">
             <label for="language" class="col-md-2 control-label">Language *</label>
             <div class="col-md-10">
-                {!! Form::select('language', ['English'=>'English Only', 'Nepali'=>'Nepali Only', 'Both'=>'English & Nepali'], null, ['class'=>'form-control', 'id'=>'eng-nep']) !!}
+                {!! Form::select('language', language(), null, ['class'=>'form-control', 'id'=>'eng-nep']) !!}
                 {!!$errors->first('language', '<span class="text-danger has-error">:message</span>')!!}
             </div>
         </div>

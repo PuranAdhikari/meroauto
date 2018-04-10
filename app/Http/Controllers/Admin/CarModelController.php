@@ -20,7 +20,7 @@ class CarModelController extends Controller
 
     public function index()
     {
-        $models = CarModel::latest()->get();
+        $models = CarModel::latest()->paginate(30);
         return view('admin.car-models.index', compact('models'));
     }
 
@@ -81,5 +81,24 @@ class CarModelController extends Controller
         $slug = Str::slug($name);
         $slugCount = CarModel::where('slug', $slug)->get()->count();
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+
+
+    public function search(Request $request)
+    {
+        $models = CarModel::query();
+        if ($request->name) {
+            $models->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if ($request->status != null) {
+            $models->where('published', $request->status);
+        }
+        if ($request->manufacturer) {
+            $models->where('manufacturer_id', $request->manufacturer);
+        }
+        $paginateItems = $request->items_per_page;
+        $models = $models->latest()->paginate($paginateItems);
+        $searching = true;
+        return view('admin.car-models.index', compact('models', 'searching'));
     }
 }

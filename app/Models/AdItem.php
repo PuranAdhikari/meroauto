@@ -6,7 +6,7 @@ use App\Observers\RecordFingerPrintObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Manufacturer extends Model
+class AdItem extends Model
 {
     use SoftDeletes;
 
@@ -25,8 +25,8 @@ class Manufacturer extends Model
         return $query->where('published', 1);
     }
 
-    public function car_models()
+    public function ad_category()
     {
-        return $this->hasMany(CarModel::class);
+        return $this->belongsTo(AdCategory::class, 'category');
     }
 }

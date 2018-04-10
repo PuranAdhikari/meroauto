@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryEditRequest extends FormRequest
+class UserCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +25,9 @@ class CategoryEditRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'slug' => 'required|unique:categories,slug,' . $this->category
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:5',
+            'password_confirmation' => 'required|min:5',
         ];
     }
 }

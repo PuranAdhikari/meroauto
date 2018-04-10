@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meroauto | Password Reset</title>
+
+    <link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/assets/admin/css/animate.css" rel="stylesheet">
+
+    <link href="/assets/admin/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
 
 <div class="container">
     <div class="row">
@@ -21,7 +41,8 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email"
+                                       value="{{ $email or old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -48,7 +69,8 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control"
+                                       name="password_confirmation" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -71,3 +93,10 @@
         </div>
     </div>
 </div>
+
+<!-- Mainly scripts -->
+<script src="/assets/admin/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/admin/js/bootstrap.min.js"></script>
+</body>
+
+</html>

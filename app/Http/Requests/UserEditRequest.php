@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CategoryEditRequest extends FormRequest
+class UserEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,13 @@ class CategoryEditRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'slug' => 'required|unique:categories,slug,' . $this->category
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($this->user->id),
+            ],
+            'password' => 'required|confirmed|min:5',
+            'password_confirmation' => 'required|min:5',
         ];
     }
 }

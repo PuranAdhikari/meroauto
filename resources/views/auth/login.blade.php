@@ -1,65 +1,69 @@
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+<head>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+    <title>Meroauto | Login</title>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+    <link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/assets/admin/css/animate.css" rel="stylesheet">
+
+    <link href="/assets/admin/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">
+                <img src="/assets/admin/img/Meroauto.png" alt="" class="img-responsive">
+            </h1>
+
+        </div>
+        <h3>Welcome to Meroauto</h3>
+        <p>Login to see it in action.</p>
+        <form class="m-t" role="form" method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required
+                       autofocus placeholder="Email">
+                @if ($errors->has('email'))
+                    <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                @endif
+            </div>
+            <div class="form-group">
+                <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                @if ($errors->has('password'))
+                    <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @endif
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <a href="{{ route('password.request') }}">
+                <small>Forgot password?</small>
+            </a>
+        </form>
+        <p class="m-t">
+            <small>&copy; Tolung Creations {!! date('Y') !!}</small>
+        </p>
     </div>
 </div>
+<!-- Mainly scripts -->
+<script src="/assets/admin/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/admin/js/bootstrap.min.js"></script>
+</body>
+
+</html>

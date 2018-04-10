@@ -16,12 +16,16 @@
 
                 <div class="ibox">
                     <div class="ibox-title">
+                        @include('admin.car_variants._search_form')
                         <h5>All car variants</h5>
                         <div class="ibox-tools">
                             <a href="/admin/car-variants/create" class="btn btn-primary btn-sm"><i
                                         class="fa fa-plus-circle"></i> Create</a>
                             @if(count($variants))
                                 <a id="delete-selected" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                <a class="btn btn-success btn-sm"
+                                   onclick="$('#car-variant-search-form').slideDown()"><i
+                                            class="fa fa-search"></i> Search</a>
                             @endif
                         </div>
                     </div>
@@ -74,6 +78,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="customPagination">
+                                    {!! $variants->appends(Request::except('page'))->render() !!}
+                                </div>
                                 {!! Form::close() !!}
                             @else
                                 <p>No car variants to show, create <a href="/admin/car-variants/create">here</a></p>
@@ -93,7 +100,7 @@
         $('#delete-selected').click(function (e) {
             e.preventDefault();
             var ck_box = $('input[type="checkbox"]:checked').length;
-            if (ck_box > 0) {
+            if (ck_box > 1) {
                 if (confirm('WARNING: You are about to trash the selected car variants!'))
                     $('#delete-form').submit();
             }

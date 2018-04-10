@@ -33,4 +33,9 @@
 
 <script src="/assets/admin/js/app.min.js"></script>
 
+<script>
+    $(function () {
+        $('img').addClass('.img-responsive');
+    })
+</script>
 @stack('scripts')

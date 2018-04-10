@@ -23,7 +23,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news = News::latest()->get();
+        $news = News::latest()->paginate(30);
         return view('admin.news.index', compact('news'));
     }
 
@@ -113,5 +113,32 @@ class NewsController extends Controller
         $slug = Str::slug($title);
         $slugCount = News::where('slug', $slug)->get()->count();
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+
+    public function search(Request $request)
+    {
+        $news = News::query();
+        if ($request->heading) {
+            $news->where(function ($query) use ($request) {
+                $query->where('english_heading', 'LIKE', '%' . $request->heading . '%')
+                    ->orWhere('nepali_heading', 'LIKE', '%' . $request->heading . '%');
+            });
+        }
+        if ($request->language) {
+            $news->where('language', $request->language);
+        }
+        if ($request->status != null) {
+            $news->where('published', $request->status);
+        }
+        if ($request->featured != null) {
+            $news->where('featured', $request->featured);
+        }
+        if ($request->parent) {
+            $news->where('category', $request->parent);
+        }
+        $paginateItems = $request->items_per_page;
+        $news = $news->latest()->paginate($paginateItems);
+        $searching = true;
+        return view('admin.news.index', compact('news', 'searching'));
     }
 }

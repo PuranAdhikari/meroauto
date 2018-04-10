@@ -19,7 +19,7 @@ class CarVariantController extends Controller
      */
     public function index()
     {
-        $variants = CarVariant::latest()->get();
+        $variants = CarVariant::latest()->paginate(30);
         return view('admin.car_variants.index', compact('variants'));
     }
 
@@ -120,5 +120,23 @@ class CarVariantController extends Controller
         $slug = Str::slug($name);
         $slugCount = CarVariant::where('slug', $slug)->get()->count();
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+
+    public function search(Request $request)
+    {
+        $variants = CarVariant::query();
+        if ($request->name) {
+            $variants->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if ($request->status != null) {
+            $variants->where('published', $request->status);
+        }
+        if ($request->model) {
+            $variants->where('car_model_id', $request->model);
+        }
+        $paginateItems = $request->items_per_page;
+        $variants = $variants->latest()->paginate($paginateItems);
+        $searching = true;
+        return view('admin.car_variants.index', compact('variants', 'searching'));
     }
 }
