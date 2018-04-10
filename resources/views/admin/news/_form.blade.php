@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+@include('admin.layouts.partials.messages.success')
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 @if(count($errors))
     <div class="alert alert-danger"><strong>Whoops!</strong> Please review the errors and try again.</div>
 @endif
@@ -69,8 +73,17 @@
                 <select name="category" class="form-control">
                     <option value="">--Select One--</option>
                     @foreach(\App\Models\Category::whereNull('parent')->get() as $cat)
+<<<<<<< HEAD
                         <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($news) && ($cat->id == $news->category))) ? 'selected' : ''}}>{{$cat->name}}@if(!$cat->published)
                                 [**Unpublished Category] @endif</option>
+=======
+                        <option value="{{$cat->id}}" {{(old('category') == $cat->id || (isset($news) && ($cat->id == $news->category))) ? 'selected' : ''}}>
+                            {{$cat->name}}
+                            @if(!$cat->published)
+                                [**Unpublished Category]
+                            @endif
+                        </option>
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
                         @if(count($cat->children_categories))
                             @include('admin.news.__category_dropdown', ['cat'=>$cat->children_categories, 'level'=>1])
                         @endif
@@ -80,6 +93,17 @@
             </div>
         </div>
         <div class="hr-line-dashed"></div>
+<<<<<<< HEAD
+=======
+        <div class="form-group">
+            <label for="tags" class="col-md-2 control-label">Tags</label>
+            <div class="col-md-10">
+                {!! Form::text('tags', null, ['class'=>'tagsinput form-control', 'data-role'=>'tagsinput']) !!}
+                {!!$errors->first('tags', '<span class="text-danger has-error">:message</span>')!!}
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
         <div class="english">
             <div class="form-group">
                 <label for="english_content" class="col-md-2 control-label">Content (English) *</label>
@@ -118,7 +142,11 @@
         <div class="form-group">
             <label for="featured" class="col-md-2 control-label">Featured</label>
             <div class="col-md-2">
+<<<<<<< HEAD
                 {!! Form::checkbox('featured', null, null, ['class'=>'js-switch']) !!}
+=======
+                {!! Form::checkbox('featured', null, null, ['class'=>'js-switch', 'id'=>'featured']) !!}
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
             </div>
             <label for="main_news" class="col-md-2 control-label">Main News</label>
             <div class="col-md-2">
@@ -175,10 +203,18 @@
 
 <div class="hr-line-dashed"></div>
 <div class="form-group">
+<<<<<<< HEAD
     <div class="col-sm-4 col-sm-offset-2">
         <a class="btn btn-white" href="/admin/news"
            onclick="return confirm('Are you sure? The unsaved changes will be discarded.')">Cancel</a>
         <button class="btn btn-primary" type="submit">Save</button>
+=======
+    <div class="col-sm-6 col-sm-offset-2">
+        <button class="btn btn-primary" type="submit" name="save" value="save">Save</button>
+        <button class="btn btn-info" type="submit" name="save_close" value="save">Save & Close</button>
+        <a class="btn btn-white" href="/admin/news"
+           onclick="return confirm('Are you sure? The unsaved changes will be discarded.')">Cancel</a>
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
     </div>
 </div>
 
@@ -218,6 +254,19 @@
                 $('.english').show();
             }
         }
+<<<<<<< HEAD
+=======
+        $('.tagsinput').tagsinput({
+            tagClass: 'label label-primary'
+        });
+
+        var featured = document.querySelector('#featured');
+        featured.onchange = function () {
+            if (featured.checked) {
+                return confirm("Another featured news will be replaced by this !");
+            }
+        };
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 
     });
 </script>

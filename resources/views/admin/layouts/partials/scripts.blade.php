@@ -22,6 +22,17 @@
 <!-- SUMMERNOTE -->
 <script src="/assets/admin/js/plugins/summernote/summernote.min.js"></script>
 
+<<<<<<< HEAD
+=======
+<!-- ICHECK -->
+<script src="/assets/admin/js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Tags Input -->
+<script src="/assets/admin/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+<!-- Color picker -->
+<script src="/assets/admin/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 
 <script src="/assets/admin/js/app.min.js"></script>
 

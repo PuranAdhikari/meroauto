@@ -32,7 +32,16 @@
             <li class="{{@$urls[4] == 'news' ? 'active' : ''}}">
                 <a href="/admin/news"><i class="fa fa-newspaper-o"></i> <span class="nav-label">News</span></a>
             </li>
+            <li class="{{@$urls[4] == 'manufacturers' ? 'active' : ''}}">
+                <a href="/admin/manufacturers"><i class="fa fa-building"></i> <span class="nav-label">Manufacturers</span></a>
+            </li>
 
+            <li class="{{@$urls[4] == 'car-models' ? 'active' : ''}}">
+                <a href="/admin/car-models"><i class="fa fa-car"></i> <span class="nav-label">Car Models</span></a>
+            </li>
+            <li class="{{@$urls[4] == 'car-variants' ? 'active' : ''}}">
+                <a href="/admin/car-variants"><i class="fa fa-th-list"></i> <span class="nav-label">Car Variants</span></a>
+            </li>
             {{--<li class="{{(@$urls[4] == 'menus' || @$urls[4] == 'menu-items') ? 'active' : ''}}">--}}
                 {{--<a href="#"><i class="fa fa-list"></i> <span class="nav-label">Menus</span><span--}}
                             {{--class="fa arrow"></span></a>--}}

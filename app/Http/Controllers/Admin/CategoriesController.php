@@ -20,7 +20,11 @@ class CategoriesController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
         $categories = Category::whereNull('parent')->get();
+=======
+        $categories = Category::whereNull('parent')->latest()->get();
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -33,8 +37,14 @@ class CategoriesController extends Controller
     {
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
+<<<<<<< HEAD
         Category::create($data);
         return redirect('/admin/categories')->with('message', 'Category created successfully.');
+=======
+        $category = Category::create($data);
+        $url = $request->save_close ? 'categories' : 'categories/' . $category->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'Category created successfully.');
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
     }
 
     public function edit($id)
@@ -49,8 +59,13 @@ class CategoriesController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $category->update($data);
+<<<<<<< HEAD
         return redirect('/admin/categories')->with('message', 'Category updated successfully.');
     }
+=======
+        $url = $request->save_close ? 'categories' : 'categories/' . $category->id . '/edit';
+        return redirect('/admin/' . $url)->with('message', 'Category updated successfully.');    }
+>>>>>>> 5c792a6c1988be8cccb22420e6f4d62f5dbd908f
 
     public function toggleStatus($id)
     {
