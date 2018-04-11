@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarVariantCreateRequest;
 use App\Http\Requests\CarVariantEditRequest;
 use App\Models\CarVariant;
-use App\Models\VariantColor;
+use App\Models\ModelColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -41,11 +41,10 @@ class CarVariantController extends Controller
      */
     public function store(CarVariantCreateRequest $request)
     {
-        $data = $request->except(['files', 'color_name', 'color_code', 'color_image_1', 'color_image_2', 'color_image_3', 'color_image_4', 'color_image_5', 'color_image_6', 'color_image_7', 'color_image_8', 'color_image_9', 'color_image_10', 'save', 'save_close']);
+        $data = $request->except(['files', 'save', 'save_close']);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $request->has('used_car') && $request->used_car == 'on' ? $data['used_car'] = 1 : $data['used_car'] = 0;
         $variant = CarVariant::create($data);
-        VariantColor::createColor($variant->id);
         $url = $request->save_close ? 'car-variants' : 'car-variants/' . $variant->id . '/edit';
         return redirect('/admin/' . $url)->with('message', 'Car variant created successfully.');
     }
@@ -83,12 +82,11 @@ class CarVariantController extends Controller
      */
     public function update(CarVariantEditRequest $request, CarVariant $carVariant)
     {
-        $data = $request->except(['files', 'color_name', 'color_code', 'color_image_1', 'color_image_2', 'color_image_3', 'color_image_4', 'color_image_5', 'color_image_6', 'color_image_7', 'color_image_8', 'color_image_9', 'color_image_10', 'save', 'save_close']);
+        $data = $request->except(['files', 'save', 'save_close']);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $request->has('used_car') && $request->used_car == 'on' ? $data['used_car'] = 1 : $data['used_car'] = 0;
         $carVariant->update($data);
         $carVariant->updateFeatures();
-        VariantColor::updateColor($carVariant->id);
         $url = $request->save_close ? 'car-variants' : 'car-variants/' . $carVariant->id . '/edit';
         return redirect('/admin/' . $url)->with('message', 'Car variant updated successfully.');
     }

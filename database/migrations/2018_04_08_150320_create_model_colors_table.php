@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariantColorsTable extends Migration
+class CreateModelColorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateVariantColorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('variant_colors', function (Blueprint $table) {
+        Schema::create('model_colors', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('variant_id')->unsigned();
-            $table->foreign('variant_id')->references('id')->on('car_variants')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('model_id')->unsigned();
+            $table->foreign('model_id')->references('id')->on('car_models')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('color_name')->nullable();
             $table->string('color_code')->nullable();
@@ -37,6 +37,6 @@ class CreateVariantColorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variant_colors');
+        Schema::dropIfExists('model_colors');
     }
 }

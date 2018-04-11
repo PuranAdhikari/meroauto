@@ -7,7 +7,6 @@
     <li><a href="#variant-specifications" class="metadata">Specifications</a></li>
     <li><a href="#variant-features" class="metadata">Features</a></li>
     <li><a href="#variant-images" class="metadata">Images</a></li>
-    <li><a href="#variant-colors-and-images" class="metadata">Variant Colors & Images</a></li>
     <li><a href="#variant-used-cars" class="metadata">For Used Cars Only</a></li>
 </ul>
 <br>
@@ -635,71 +634,6 @@
                 <a class='btn btn-default btn_upload_files' file_type='files' selecter='images'
                    style='margin-top:5px;'>Upload <i class='fa fa-cloud-upload'></i></a></div>
 
-        </div>
-    </div>
-    <div class="tab-pane fade" id="variant-colors-and-images" role="tabpanel">
-        <div class="table-responsive">
-            <table class="table table-hover table-striped table-color-and-images">
-                <tr>
-                    <th>Color Name</th>
-                    <th>Color Code</th>
-                    <th>Image</th>
-                    <th>Remove</th>
-                </tr>
-                @if(isset($variant) && count($variant->colors) > 0)
-                    @foreach($variant->colors as $key => $color)
-                        <?php $count = $key + 1; ?>
-                        <tr id="color-{{$count}}">
-                            <td>
-                                {!! Form::text('color_name['.$count.']', $color->color_name, ['class'=>'form-control']) !!}
-                            </td>
-                            <td>
-                                {!! Form::text('color_code['.$count.']', $color->color_code, ['class'=>'form-control color-picker']) !!}
-                            </td>
-                            <td>
-                                {!! Form::hidden('color_image_'.$count, $color->image, ['class'=>'form-control', 'placeholder'=>'Choose Image', 'data-rule-maxlength'=>250]) !!}
-                                <a class="btn btn-default btn_upload_image btn-in-td {{isset($color) && $color->image ? 'hide' : ''}}"
-                                   file_type="image"
-                                   selecter="color_image_{{$count}}">Upload <i class="fa fa-cloud-upload"></i></a>
-                                @if(isset($color) && $color->image)
-                                    <div class="uploaded_image"><img
-                                                src="{{\App\Models\Upload::find($color->image)->path()}}"><i
-                                                title="Remove Image" class="fa fa-times"></i></div>
-                                @else
-                                    <div class="uploaded_image hide"><img src=""><i title="Remove Image"
-                                                                                    class="fa fa-times"></i></div>
-                                @endif
-                            </td>
-                            <td>
-                                <a onclick="$('#color-{{$count}}').remove()"><i class="fa fa-minus-circle"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    <?php $count = 0; ?>
-                @endif
-                @for($i = 1; $i < 11 - $count; $i++)
-                    <tr id="color-{{$count + $i}}">
-                        <td>
-                            {!! Form::text('color_name['.($count + $i).']', null, ['class'=>'form-control']) !!}
-                        </td>
-                        <td>
-                            {!! Form::text('color_code['.($count + $i).']', null, ['class'=>'form-control color-picker']) !!}
-                        </td>
-                        <td>
-                            {!! Form::hidden('color_image_'.($count + $i), null, ['class'=>'form-control', 'placeholder'=>'Choose Image', 'data-rule-maxlength'=>250]) !!}
-                            <a class="btn btn-default btn_upload_image btn-in-td"
-                               file_type="image"
-                               selecter="color_image_{{$count + $i}}">Upload <i class="fa fa-cloud-upload"></i></a>
-                            <div class="uploaded_image hide"><img src=""><i title="Remove Image"
-                                                                            class="fa fa-times"></i></div>
-                        </td>
-                        <td>
-                            <a onclick="$('#color-{{$count + $i}}').remove()"><i class="fa fa-minus-circle"></i></a>
-                        </td>
-                    </tr>
-                @endfor
-            </table>
         </div>
     </div>
     <div class="tab-pane fade" id="variant-used-cars" role="tabpanel">

@@ -25,11 +25,6 @@ class CarVariant extends Model
         return $this->belongsTo(CarModel::class, 'car_model_id');
     }
 
-    public function colors()
-    {
-        return $this->hasMany(VariantColor::class, 'variant_id');
-    }
-
     public function scopePublished($query)
     {
         return $query->where('published', 1);

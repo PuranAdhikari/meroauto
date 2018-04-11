@@ -30,4 +30,8 @@ class CarModel extends Model
         return $query->where('published', 1);
     }
 
+    public function colors()
+    {
+        return $this->hasMany(ModelColor::class, 'model_id');
+    }
 }

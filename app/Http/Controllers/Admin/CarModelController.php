@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarModelCreateRequest;
 use App\Http\Requests\CarModelEditRequest;
 use App\Models\CarModel;
+use App\Models\ModelColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -34,6 +35,7 @@ class CarModelController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $model = CarModel::create($data);
+        ModelColor::createColor($model->id);
         $url = $request->save_close ? 'car-models' : 'car-models/' . $model->id . '/edit';
         return redirect('/admin/' . $url)->with('message', 'Car model created successfully.');
     }
@@ -50,6 +52,7 @@ class CarModelController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         $model->update($data);
+        ModelColor::updateColor($model->id);
         $url = $request->save_close ? 'car-models' : 'car-models/' . $model->id . '/edit';
         return redirect('/admin/' . $url)->with('message', 'Car model updated successfully.');
     }

@@ -6,7 +6,7 @@ use App\Observers\RecordFingerPrintObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class VariantColor extends Model
+class ModelColor extends Model
 {
     protected $guarded = [];
 
@@ -18,9 +18,9 @@ class VariantColor extends Model
         parent::boot();
     }
 
-    public function variant()
+    public function model()
     {
-        return $this->belongsTo(CarVariant::class, 'variant_id');
+        return $this->belongsTo(CarModel::class, 'model_id');
     }
 
     public static function createColor($id)
@@ -29,7 +29,7 @@ class VariantColor extends Model
         foreach (array_filter($request->color_code) as $i => $code) {
             $image = 'color_image_' . $i;
             self::create([
-                'variant_id' => $id,
+                'model_id' => $id,
                 'color_name' => $request->color_name[$i],
                 'color_code' => $request->color_code[$i],
                 'image' => $request->$image
@@ -39,8 +39,8 @@ class VariantColor extends Model
 
     public static function updateColor($id)
     {
-        $variant = CarVariant::findOrFail($id);
-        $variant->colors()->delete();
+        $model = CarModel::findOrFail($id);
+        $model->colors()->delete();
         self::createColor($id);
     }
 }
