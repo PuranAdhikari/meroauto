@@ -28,7 +28,8 @@ class News extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('published', 1);
+        return $query->where('published', 1)
+            ->where('start_publishing', '<=', Carbon::now());
     }
 
     public function setStartPublishingAttribute($date)

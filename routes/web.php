@@ -118,7 +118,7 @@ $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 
 #Frontend Routes
 
-$this->group(['namespace' => 'Frontend'], function (){
+$this->group(['namespace' => 'Frontend'], function () {
 
     #Homepage Route
     $this->get('/', 'NewsController@index');
