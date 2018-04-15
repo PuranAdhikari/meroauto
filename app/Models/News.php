@@ -68,8 +68,8 @@ class News extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public static function removeFeatured()
-    {
-        return self::where('featured', 1)->update(['featured' => 0]);
-    }
+//    public static function removeFeatured()
+//    {
+//        return self::where('featured', 1)->update(['featured' => 0]);
+//    }
 }

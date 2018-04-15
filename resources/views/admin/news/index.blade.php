@@ -81,9 +81,7 @@
                                                 <a data-toggle="tooltip" data-placement="top"
                                                    title="{{$post->featured ? 'Unfeature Item Item' : 'Feature Item'}}"
                                                    href="/admin/news/toggle-featured/{{$post->id}}"
-                                                   class="label label-{!! $post->featured ? 'primary' : 'danger' !!}"
-                                                   onclick="return confirm('{!! $post->featured ? 'There will be no any featured news !' : 'Another featured news will be replaced by this !' !!}')"
-                                                >
+                                                   class="label label-{!! $post->featured ? 'primary' : 'danger' !!}">
                                                     {!! $post->featured ? 'Featured' : 'Not Featured' !!}
                                                 </a>
                                             </td>

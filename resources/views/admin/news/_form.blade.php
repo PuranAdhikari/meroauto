@@ -241,12 +241,12 @@
             tagClass: 'label label-primary'
         });
 
-        var featured = document.querySelector('#featured');
-        featured.onchange = function () {
-            if (featured.checked) {
-                return confirm("Another featured news will be replaced by this !");
-            }
-        };
+//        var featured = document.querySelector('#featured');
+//        featured.onchange = function () {
+//            if (featured.checked) {
+//                return confirm("Another featured news will be replaced by this !");
+//            }
+//        };
 
     });
 </script>

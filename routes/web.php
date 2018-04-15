@@ -113,7 +113,6 @@ $this->group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     $this->post('/uploads_update_filename', 'UploadsController@update_filename');
     $this->post('/uploads_update_public', 'UploadsController@update_public');
     $this->post('/uploads_delete_file', 'UploadsController@delete_file');
-
 });
 
 #Frontend Routes

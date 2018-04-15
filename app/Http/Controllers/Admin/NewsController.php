@@ -37,7 +37,7 @@ class NewsController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         if ($request->has('featured') && $request->featured == 'on') {
-            News::removeFeatured();
+//            News::removeFeatured();
             $data['featured'] = 1;
         } else {
             $data['featured'] = 0;
@@ -60,7 +60,7 @@ class NewsController extends Controller
         $data = $request->only($this->requestArray);
         $request->has('published') && $request->published == 'on' ? $data['published'] = 1 : $data['published'] = 0;
         if ($request->has('featured') && $request->featured == 'on') {
-            News::removeFeatured();
+//            News::removeFeatured();
             $data['featured'] = 1;
         } else {
             $data['featured'] = 0;
@@ -92,7 +92,7 @@ class NewsController extends Controller
             $news->featured = 0;
             $feature = 'unfeatured';
         } else {
-            News::removeFeatured();
+//            News::removeFeatured();
             $news->featured = 1;
             $feature = 'featured';
         }
