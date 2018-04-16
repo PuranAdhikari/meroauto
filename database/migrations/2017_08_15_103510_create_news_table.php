@@ -26,8 +26,8 @@ class CreateNewsTable extends Migration
 
             $table->integer('image')->unsigned()->nullable();
 
-            $table->text('english_content')->nullable();
-            $table->text('nepali_content')->nullable();
+            $table->longText('english_content')->nullable();
+            $table->longText('nepali_content')->nullable();
 
             $table->tinyInteger('featured')->default(0);
             $table->tinyInteger('published')->default(0);

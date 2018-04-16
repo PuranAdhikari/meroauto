@@ -220,7 +220,7 @@
                                 <label for="min_turning_radius" class="col-md-2 control-label">Minimum Turning
                                     Radius</label>
                                 <div class="col-md-4">
-                                    {!! Form::number('min_turning_radius', null, ['class'=>'form-control']) !!}
+                                    {!! Form::text('min_turning_radius', null, ['class'=>'form-control']) !!}
                                     {!!$errors->first('min_turning_radius', '<span class="text-danger has-error">:message</span>')!!}
                                 </div>
                                 <label for="no_of_doors" class="col-md-2 control-label">No. Of Doors</label>
